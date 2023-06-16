@@ -6,3 +6,12 @@ vim.keymap.set("n", "<leader>nb", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
 
 -- Telescope mappings in after/plugin/telescope.lua
+
+-----------------
+-- Normal mode --
+-----------------
+
+-----------------
+-- Visual mode --
+-----------------
+
