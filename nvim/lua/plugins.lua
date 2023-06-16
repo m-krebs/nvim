@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' } } }
 	use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
     use { 'neovim/nvim-lspconfig' }
-    use { 'hrsh7th/nvim-cmp', config = [[require('nvim-cmp')]] }
+    use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completio
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completio
