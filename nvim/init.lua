@@ -1,4 +1,5 @@
-require('me')
+require('plugins')
+require('keymaps')
 
 vim.cmd([[
 augroup Packer_user_config
