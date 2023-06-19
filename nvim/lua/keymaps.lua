@@ -18,4 +18,3 @@ vim.keymap.set("n", "<leader>bd", vim.cmd.bd)               -- Closes current Bu
 -- Insert mode --
 -----------------
 vim.keymap.set("i", "<C-H>", "<C-W>")                       -- Adds ctrl+backspace functionality in insert mode
-
