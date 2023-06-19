@@ -6,9 +6,9 @@ vim.g.mapleader = " "
 -----------------
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle)
-vim.keymap.set("n", "<leader>pb", vim.cmd.bprevious)
-vim.keymap.set("n", "<leader>nb", vim.cmd.bnext)
-vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
+vim.keymap.set("n", "<leader>pb", vim.cmd.bprevious)        -- Switches to previous Buffer
+vim.keymap.set("n", "<leader>nb", vim.cmd.bnext)            -- Switches to next Buffer
+vim.keymap.set("n", "<leader>bd", vim.cmd.bd)               -- Closes current Buffer
 
 -----------------
 -- Visual mode --
@@ -17,5 +17,5 @@ vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
 -----------------
 -- Insert mode --
 -----------------
-vim.keymap.set("i", "<C-H>", "<C-W>")
+vim.keymap.set("i", "<C-H>", "<C-W>")                       -- Adds ctrl+backspace functionality in insert mode
 
