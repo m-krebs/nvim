@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
 	use { 'folke/tokyonight.nvim' }
 	use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons' } }
-	use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons', }, config = function() require('nvim-tree').setup {} end }
+	use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, config = function() require('nvim-tree').setup {} end }
 	use { 'mhartington/formatter.nvim' }
 	use { 'akinsho/bufferline.nvim', tag = '*', requires = 'nvim-tree/nvim-web-devicons'}
 	use { 'lukas-reineke/indent-blankline.nvim', requires = 'nvim-treesitter/nvim-treesitter' }
@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim' }
     use { 'neovim/nvim-lspconfig' }
-    use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
+    use { 'hrsh7th/nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completio
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completio
