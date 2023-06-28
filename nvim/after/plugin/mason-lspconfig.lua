@@ -8,11 +8,6 @@ require('mason').setup({
     }
 })
 
-require('mason-lspconfig').setup({
-    -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'pylsp', 'gopls', 'lua_ls', 'rust_analyzer' },
-})
-
 -- Set different settings for different languages' LSP
 -- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
@@ -21,6 +16,13 @@ require('mason-lspconfig').setup({
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 local util = require('lspconfig.util')
+local mason_lspconfig = require('mason-lspconfig')
+
+mason_lspconfig.setup({
+    -- A list of servers to automatically install if they're not already installed
+    ensure_installed = { 'lua_ls', },
+    automatic_installation = { exclude = { 'rust_analyzer', 'pylsp', 'gopls' } },
+})
 
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -55,6 +57,14 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        lspconfig[server_name].setup {
+            on_attach = on_attach,
+        }
+    end
+}
+
 if not configs.helm_ls then
     configs.helm_ls = {
         default_config = {
@@ -67,20 +77,20 @@ if not configs.helm_ls then
     }
 end
 
-lspconfig.lua_ls.setup({
-    on_attach = on_attach,
-})
+--lspconfig.lua_ls.setup({
+--    on_attach = on_attach,
+--})
 
-lspconfig.pylsp.setup({
-    on_attach = on_attach,
-})
+--lspconfig.pylsp.setup({
+--    on_attach = on_attach,
+--})
 
-lspconfig.spectral.setup({
-    on_attach = on_attach,
-})
+--lspconfig.spectral.setup({
+--    on_attach = on_attach,
+--})
 
-lspconfig.helm_ls.setup({
-    on_attach = on_attach,
-    filetypes = { "helm" },
-    cmd = { "helm_ls", "serve" },
-})
+--lspconfig.helm_ls.setup({
+--    on_attach = on_attach,
+--    filetypes = { "helm" },
+--    cmd = { "helm_ls", "serve" },
+--})
