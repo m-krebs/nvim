@@ -14,8 +14,6 @@ require('mason').setup({
 --     - the settings table is sent to the LSP
 --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
 local lspconfig = require('lspconfig')
-local configs = require('lspconfig.configs')
-local util = require('lspconfig.util')
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup({
@@ -57,40 +55,20 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+local util = require('lspconfig.util')
 mason_lspconfig.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {
             on_attach = on_attach,
         }
-    end
+    end,
+    -- If a special configuratin is needed do it inside the handler or the lserver will be started twice
+    ['helm_ls'] = function()
+        lspconfig.helm_ls.setup {
+            cmd = { 'helm_ls', 'serve' },
+            filetypes = { 'helm', 'yaml', 'yml' },
+            root_dir = util.root_pattern('Chart.yaml')
+        }
+    end,
 }
 
-if not configs.helm_ls then
-    configs.helm_ls = {
-        default_config = {
-            cmd = { "helm_ls", "serve" },
-            filetypes = { 'helm' },
-            root_dir = function(fname)
-                return util.root_pattern('Chart.yaml')(fname)
-            end,
-        },
-    }
-end
-
---lspconfig.lua_ls.setup({
---    on_attach = on_attach,
---})
-
---lspconfig.pylsp.setup({
---    on_attach = on_attach,
---})
-
---lspconfig.spectral.setup({
---    on_attach = on_attach,
---})
-
---lspconfig.helm_ls.setup({
---    on_attach = on_attach,
---    filetypes = { "helm" },
---    cmd = { "helm_ls", "serve" },
---})
