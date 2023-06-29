@@ -33,6 +33,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+    require('completion').on_attach(client)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -70,5 +71,26 @@ mason_lspconfig.setup_handlers {
             root_dir = util.root_pattern('Chart.yaml')
         }
     end,
+    ['rust_analyzer'] = function()
+        lspconfig.rust_analyzer.setup {
+            settings = {
+                ['rust_analyzer'] = {
+                    imports = {
+                        granularity = {
+                            group = 'module',
+                        },
+                        prefix = 'self',
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
+                        enable = true
+                    },
+                }
+            }
+        }
+    end
 }
-
