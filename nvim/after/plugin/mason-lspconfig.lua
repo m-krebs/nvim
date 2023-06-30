@@ -4,7 +4,9 @@ require('mason').setup({
             package_installed = "✓",
             package_pending = "➜",
             package_uninstalled = "✗"
-        }
+        },
+        width = 1;
+        height = 1;
     }
 })
 
@@ -56,6 +58,8 @@ local on_attach = function(client, bufnr)
 end
 
 local util = require('lspconfig.util')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 mason_lspconfig.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {
@@ -68,6 +72,12 @@ mason_lspconfig.setup_handlers {
             cmd = { 'helm_ls', 'serve' },
             filetypes = { 'helm', 'yaml', 'yml' },
             root_dir = util.root_pattern('Chart.yaml')
+        }
+    end,
+    ['cssls'] = function()
+        lspconfig.cssls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
         }
     end,
 }
