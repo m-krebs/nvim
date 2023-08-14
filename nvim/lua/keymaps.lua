@@ -1,4 +1,7 @@
 vim.g.mapleader = ' '
+vim.g.floaterm_keymap_new    = '<F7>'
+vim.g.floaterm_keymap_toggle = '<F12>'
+
 -- Telescope mappings in after/plugin/telescope.lua
 
 -----------------
