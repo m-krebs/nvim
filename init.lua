@@ -13,3 +13,8 @@ autocmd BufWritePost * FormatWrite
 autocmd User FormatterPost lua print 'Formatted'
 augroup END
 ]])
+
+-- augroup fmt
+-- autocmd!
+-- autocmd BufWritePre * undojoin | Neoformat
+-- augroup END
