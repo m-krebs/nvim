@@ -8,3 +8,5 @@ vim.keymap.set("i", "<C-H>", "<C-W>")
 
 -- make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>cj", "<cmd>call VrcQuery()<CR>", { desc = "Run REST Query" })
