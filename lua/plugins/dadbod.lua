@@ -1,17 +1,17 @@
 return {
   {
-    "tpope/vim-dadbod",
+    "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion",
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", lazy = true, ft = { "sql", "mysql", "plsql" } },
     },
-    lazy = false,
+    lazy = true,
     cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
     keys = {
-      { "<leader>Du", "<Cmd>DBUIToggle<CR>", desc = "Toggle UI" },
-      { "<leader>Df", "<Cmd>DBUIFindBuffer<CR>", desc = "Find Buffer" },
-      { "<leader>Dr", "<Cmd>DBUIRenameBuffer<CR>", desc = "Rename Buffer" },
-      { "<leader>Dq", "<Cmd>DBUILastQueryInfo<CR>", desc = "Last query info" },
+      { "<leader>tdu", "<Cmd>DBUIToggle<CR>", desc = "Toggle UI" },
+      { "<leader>tdf", "<Cmd>DBUIFindBuffer<CR>", desc = "Find Buffer" },
+      { "<leader>tdr", "<Cmd>DBUIRenameBuffer<CR>", desc = "Rename Buffer" },
+      { "<leader>tdq", "<Cmd>DBUILastQueryInfo<CR>", desc = "Last query info" },
     },
   },
 }
