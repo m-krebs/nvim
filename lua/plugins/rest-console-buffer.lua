@@ -5,7 +5,7 @@ return {
     config = true,
     keys = {
       {
-        "<leader>tr",
+        "<leader>mr",
         "<cmd>RESTBuffer<CR>",
         { desc = "Create REST console buffer" },
       },

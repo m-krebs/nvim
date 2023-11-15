@@ -8,10 +8,10 @@ return {
     lazy = true,
     cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
     keys = {
-      { "<leader>tdu", "<Cmd>DBUIToggle<CR>", desc = "Toggle UI" },
-      { "<leader>tdf", "<Cmd>DBUIFindBuffer<CR>", desc = "Find Buffer" },
-      { "<leader>tdr", "<Cmd>DBUIRenameBuffer<CR>", desc = "Rename Buffer" },
-      { "<leader>tdq", "<Cmd>DBUILastQueryInfo<CR>", desc = "Last query info" },
+      { "<leader>mdu", "<Cmd>DBUIToggle<CR>", desc = "Toggle UI" },
+      { "<leader>mdf", "<Cmd>DBUIFindBuffer<CR>", desc = "Find Buffer" },
+      { "<leader>mdr", "<Cmd>DBUIRenameBuffer<CR>", desc = "Rename Buffer" },
+      { "<leader>mdq", "<Cmd>DBUILastQueryInfo<CR>", desc = "Last query info" },
     },
   },
 }

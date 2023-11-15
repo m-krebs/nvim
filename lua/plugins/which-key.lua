@@ -6,8 +6,8 @@ return {
       plugins = { spelling = true },
       defaults = {
         mode = { "n", "v" },
-        ["<leader>t"] = { name = "+tools" },
-        ["<leader>td"] = { name = "+db" },
+        ["<leader>m"] = { name = "+tools" },
+        ["<leader>md"] = { name = "+db" },
       },
     },
   },
