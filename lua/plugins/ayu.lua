@@ -1,0 +1,5 @@
+return {
+  {
+    "Shatur/neovim-ayu",
+  },
+}
