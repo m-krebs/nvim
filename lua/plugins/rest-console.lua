@@ -4,7 +4,7 @@ return {
     ft = "rest",
     keys = {
       {
-        "<leader>cj",
+        "<leader>mq",
         "<cmd>call VrcQuery()<CR>",
         desc = "Run REST Query",
       },
