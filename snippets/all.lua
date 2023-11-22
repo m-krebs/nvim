@@ -25,4 +25,7 @@ return {
   s({ trig = "ymd", name = "Current date", dscr = "Insert the current date" }, {
     p(os.date, "%Y-%m-%d"),
   }),
+  s({ trig = "loc", name = "localhost", dscr = "Insert http://localhost" }, {
+    t("http://localhost"),
+  }),
 }
