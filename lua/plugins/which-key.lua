@@ -7,6 +7,7 @@ return {
       defaults = {
         mode = { "n", "v" },
         ["<leader>m"] = { name = "+tools" },
+        ["<leader>mr"] = { name = "+rest-console" },
         ["<leader>md"] = { name = "+db" },
       },
     },

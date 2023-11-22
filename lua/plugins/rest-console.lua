@@ -4,9 +4,21 @@ return {
     ft = "rest",
     keys = {
       {
-        "<leader>mq",
+        "<leader>mrq",
         "<cmd>call VrcQuery()<CR>",
         desc = "Run REST Query",
+      },
+    },
+  },
+  {
+    "m-krebs/rest-console-buffer.nvim",
+    lazy = false,
+    config = true,
+    keys = {
+      {
+        "<leader>mrn",
+        "<cmd>RESTBuffer<CR>",
+        desc = "new REST-C buffer",
       },
     },
   },
