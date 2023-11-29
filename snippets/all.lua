@@ -28,4 +28,16 @@ return {
   s({ trig = "loc", name = "localhost", dscr = "Insert http://localhost" }, {
     t("http://localhost"),
   }),
+  s({ trig = "P", name = "POST /", dscr = "Insert POST /" }, {
+    t("POST /"),
+  }),
+  s({ trig = "PU", name = "PUT /", dscr = "Insert PUT /" }, {
+    t("PUT /"),
+  }),
+  s({ trig = "G", name = "GET /", dscr = "Insert GET /" }, {
+    t("GET /"),
+  }),
+  s({ trig = "D", name = "DELETE /", dscr = "Insert DELETE /" }, {
+    t("DELETE /"),
+  }),
 }
