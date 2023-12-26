@@ -3,6 +3,7 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
+      "onsails/lspkind.nvim",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -13,6 +14,13 @@ return {
       end
       local luasnip = require("luasnip")
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
+
+      opts.window = {
+        completion = cmp.config.window.bordered({}),
+        documentation = cmp.config.window.bordered({}),
+        scrollbar = false,
+      }
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -40,6 +48,13 @@ return {
             fallback()
           end
         end, { "i", "s" }),
+      })
+
+      opts.formatting = vim.tbl_extend("force", opts.formatting, {
+        format = lspkind.cmp_format({
+          maxwidth = 50,
+          ellipsis_char = "...",
+        }),
       })
     end,
   },
