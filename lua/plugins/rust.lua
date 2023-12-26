@@ -5,7 +5,7 @@ return {
     ft = { "rust" },
   },
   {
-    "saecki/crates.nvim",
+    "Saecki/crates.nvim",
     tag = "stable",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
