@@ -25,6 +25,15 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-l>"] = cmp.mapping(function(fallback)
+          cmp.mapping.abort()
+          local copilot_keys = vim.fn["copilot#Accept"]()
+          if copilot_keys ~= "" then
+            vim.api.nvim_feedkeys(copilot_keys, "i", true)
+          else
+            fallback()
+          end
+        end),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior

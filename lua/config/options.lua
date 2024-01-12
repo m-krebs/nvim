@@ -10,3 +10,7 @@ vim.g.vrc_output_buffer_name = "_OUTPUT.json"
 vim.g.vrc_auto_format_response_patterns = {
   json = "jq",
 }
+
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
