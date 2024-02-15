@@ -3,13 +3,17 @@ return {
   opts = {
     window = {
       mappings = {
-        ["G"] = function(state)
-          local node = state.tree:get_node()
-          if node.type == "directory" then
-            vim.api.nvim_command('Telescope live_grep search_dirs={"' .. node:get_id() .. '"}')
-          end
-        end,
+        ["G"] = "grep_dir",
       },
+    },
+    commands = {
+      grep_dir = function(state)
+        local node = state.tree:get_node()
+        if node.type == "directory" then
+          -- vim.api.nvim_command('Telescope live_grep search_dirs={"' .. node:get_id() .. '"}')
+          require("telescope.builtin").live_grep({ search_dirs = { node:get_id() } })
+        end
+      end,
     },
   },
 }
