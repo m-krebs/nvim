@@ -14,3 +14,6 @@ vim.g.vrc_auto_format_response_patterns = {
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
+
+-- conceallevel for obsidian
+vim.opt.conceallevel = 1
