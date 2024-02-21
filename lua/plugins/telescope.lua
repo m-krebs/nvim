@@ -4,8 +4,24 @@ return {
     keys = {
       {
         "<leader>fg",
-        "<cmd>Telescope git_files<cr>",
+        function()
+          require("search").open({ tab_id = 2 })
+        end,
         desc = "Find git Files",
+      },
+      {
+        "<leader>sg",
+        function()
+          require("search").open({ tab_id = 3 })
+        end,
+        desc = "Grep (root dir)",
+      },
+      {
+        "<leader>/",
+        function()
+          require("search").open({ tab_id = 3 })
+        end,
+        desc = "Grep (root dir)",
       },
     },
   },
