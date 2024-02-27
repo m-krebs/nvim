@@ -3,6 +3,13 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       {
+        "<leader>fF",
+        function()
+          require("search").open({ tab_id = 1 })
+        end,
+        desc = "Find Files (cwd)",
+      },
+      {
         "<leader>fg",
         function()
           require("search").open({ tab_id = 2 })
