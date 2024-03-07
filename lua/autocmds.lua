@@ -1,3 +1,9 @@
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+local function augroup(name)
+  return vim.api.nvim_create_augroup("myvim_" .. name, { clear = true })
+end
+
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd('BufReadPost', {
   group = augroup 'last_loc',
