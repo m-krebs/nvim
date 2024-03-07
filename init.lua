@@ -12,7 +12,7 @@ require 'options'
 require 'keymaps'
 
 -- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+require 'autocmds'
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -30,3 +30,5 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup 'plugins'
+
+vim.cmd 'colorscheme ayu' -- sets colorscheme

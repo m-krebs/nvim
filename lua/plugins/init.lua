@@ -1,6 +1,7 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
+  { 'Shatur/neovim-ayu' },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
