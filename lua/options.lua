@@ -1,55 +1,36 @@
 -- See `:help vim.opt or option-list`
 local opt = vim.opt
 
--- Enable relative line numbers
-opt.number = true
-opt.relativenumber = true
-
--- Enable mouse mode, can be useful for resizing splits for example!
-opt.mouse = 'a'
-
--- Don't show the mode, since it's already in status line
-opt.showmode = false
-
--- Sync clipboard between OS and Neovim.
---  See `:help 'clipboard'`
-opt.clipboard = 'unnamedplus'
-
--- Enable break indent
-opt.breakindent = true
-
--- Save undo history
-opt.undofile = true
+opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+opt.confirm = true -- Confirm to save before exiting modified buffer
+opt.cursorline = true -- Enable highlighting for the current line
+opt.hlsearch = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 opt.ignorecase = true
-opt.smartcase = true
-
--- Keep signcolumn on by default
-opt.signcolumn = 'yes'
-
--- Decrease update time
-opt.updatetime = 250
-opt.timeoutlen = 300
-
--- Configure how new splits should be opened
-opt.splitright = true
-opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
+opt.inccommand = 'nosplit'
+opt.laststatus = 3
 opt.list = true
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.mouse = 'a' -- enable mouse mode
+opt.number = true -- print line number
+opt.relativenumber = true -- relative line number
 
--- Preview substitutions live, as you type!
-opt.inccommand = 'split'
+opt.scrolloff = 4
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true
+opt.smartindent = true
+opt.splitbelow = true
+opt.splitkeep = 'screen'
+opt.splitright = true
 
--- Show which line your cursor is on
-opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 10
-
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-opt.hlsearch = true
+opt.tabstop = 2
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300
+opt.undofile = true -- Save undo history
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
+opt.wildmode = 'longest:full,full' -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
