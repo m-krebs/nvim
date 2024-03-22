@@ -1,0 +1,7 @@
+version: '3'
+services:
+  neovim:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: m-krebs-neovim
