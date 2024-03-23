@@ -5,7 +5,7 @@ return {
       windows = {
         preview = true,
         width_focus = 30,
-        width_preview = 30,
+        width_preview = 50,
       },
       options = {
         use_as_default_explorer = true, -- Whether to use for editing directories
@@ -110,6 +110,7 @@ return {
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
+      'FabianWirth/search.nvim',
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for install instructions
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -152,8 +153,14 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader/', builtin.live_grep, { desc = 'Grep (root dir)' })
-      vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = '[ ] Find files (root dir)' })
+      local search = require 'search'
+
+      vim.keymap.set('n', '<leader>/', function()
+        search.open { tab_id = 3 }
+      end, { desc = 'Grep (root dir)' })
+      vim.keymap.set('n', '<leader><space>', function()
+        search.open()
+      end, { desc = '[ ] Find files (root dir)' })
       -- find
       vim.keymap.set('n', '<leader>fc', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
