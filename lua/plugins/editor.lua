@@ -110,8 +110,50 @@ return {
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
-      'FabianWirth/search.nvim',
       'nvim-lua/plenary.nvim',
+      {
+        'FabianWirth/search.nvim',
+        opts = {
+          append_tabs = {
+            {
+              name = 'Buffers',
+              function()
+                Utils.telescope 'buffers'
+              end,
+            },
+          },
+          collections = {
+            search = {
+              tabs = {
+                {
+                  name = 'Help',
+                  function()
+                    Utils.telescope 'help_tags'
+                  end,
+                },
+                {
+                  name = 'Keymaps',
+                  function()
+                    Utils.telescope 'keymaps'
+                  end,
+                },
+                {
+                  name = 'Commands',
+                  function()
+                    Utils.telescope 'commands'
+                  end,
+                },
+                {
+                  name = 'Man Pages',
+                  function()
+                    Utils.telescope 'man_pages'
+                  end,
+                },
+              },
+            },
+          },
+        },
+      },
       { -- If encountering errors, see telescope-fzf-native README for install instructions
         'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -163,12 +205,23 @@ return {
       end, { desc = '[ ] Find files (root dir)' })
       -- find
       vim.keymap.set('n', '<leader>fc', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        builtin.find_files { name = 'Git Files', cwd = vim.fn.stdpath 'config' }
       end, { desc = 'Find Neovim [C]onfig files' })
       -- search
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<leader>sC', function()
+        search.open { collection = 'search', tab_id = 3 }
+      end, { desc = '[S]earch [C]ommands' })
+      vim.keymap.set('n', '<leader>sh', function()
+        search.open { collection = 'search' }
+      end, { desc = '[H]elp Pages' })
+      vim.keymap.set('n', '<leader>sk', function()
+        search.open { collection = 'search', tab_id = 2 }
+      end, { desc = '[K]ey Maps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = 'Jump to [M]ark' })
+      vim.keymap.set('n', '<leader>sM', function()
+        search.open { collection = 'search', tab_id = 4 }
+      end, { desc = '[S]earch [M]an Pages' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -179,7 +232,7 @@ return {
       vim.keymap.set('n', '<leader>sb', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
+          winblend = 4,
           previewer = false,
         })
       end, { desc = 'Fuzzily search in current [b]uffer' })

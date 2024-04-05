@@ -15,6 +15,10 @@ require 'autocmds'
 -- [[ Install `lazy.nvim` plugin manager ]]
 require 'lazy-bootstrap'
 
+_G.Utils = require 'util'
+-- [[ Load util functions ]]
+-- require 'util'
+
 -- [[ Configure and install plugins ]]
 require('lazy').setup 'plugins'
 
