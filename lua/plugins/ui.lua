@@ -48,12 +48,30 @@ return {
       })
     end,
   },
+
+  -- statusline
+  {
+    'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
+    opts = function()
+      return {
+        options = {
+          globalstatus = true,
+        },
+      }
+    end,
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {
-      -- add any options here
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        inc_rename = true,
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -68,18 +86,19 @@ return {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     opts = function()
-      local logo = [[
-+-+-+ +-+-+-+-+
-|B|e| |N|i|c|e|
-+-+-+ +-+-+-+-+
-      ]]
+      local hour = tonumber(vim.fn.strftime '%H')
+      local part_id = math.floor((hour + 4) / 8) + 1
+      local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
+      local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
 
-      logo = string.rep('\n', 8) .. logo .. '\n\n'
+      local header = ('Good %s, [ %s ]'):format(day_part, username)
+
+      header = string.rep('\n', 8) .. "I'm using neovim (BTW)" .. '\n\n\n' .. header .. '\n\n\n'
 
       local opts = {
         theme = 'doom',
         config = {
-          header = vim.split(logo, '\n'),
+          header = vim.split(header, '\n'),
           center = {
             {
               action = 'ene | startinsert',
@@ -148,13 +167,14 @@ return {
       require('which-key').setup()
 
       require('which-key').register {
+        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>f'] = { name = '[F]ile/find', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>q'] = { name = '[Q]uit/session', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '+[F]ile/find', _ = 'which_key_ignore' },
-        ['<leader>q'] = { name = '+[Q]uit/session', _ = 'which_key_ignore' },
-        ['<leader>b'] = { name = '+[B]uffer', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]indow', _ = 'which_key_ignore' },
       }
     end,
   },
