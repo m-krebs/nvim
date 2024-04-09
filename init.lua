@@ -12,14 +12,12 @@ require 'keymaps'
 -- [[ Basic Autocommands ]]
 require 'autocmds'
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require 'lazy-bootstrap'
-
-_G.Utils = require 'util'
 -- [[ Load util functions ]]
--- require 'util'
+_G.Utils = require 'util'
 
--- [[ Configure and install plugins ]]
-require('lazy').setup 'plugins'
+-- [[ Install `lazy.nvim` plugin manager ]]
+-- this loads plugins configured with lazy
+-- that are found under lua/plugins/
+require 'lazy-bootstrap'
 
 vim.cmd 'colorscheme ayu' -- sets colorscheme
