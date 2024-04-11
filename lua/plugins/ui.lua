@@ -103,7 +103,7 @@ return {
             {
               action = 'ene | startinsert',
               desc = ' New File',
-              icon = ' ',
+              icon = ' ',
               key = 'n',
             },
             {

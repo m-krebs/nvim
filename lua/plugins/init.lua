@@ -3,6 +3,7 @@ return {
 
   -- load theme
   'Shatur/neovim-ayu',
+  'eldritch-theme/eldritch.nvim',
 
   -- {
   --   'ahmedkhalf/project.nvim',
