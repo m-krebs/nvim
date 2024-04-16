@@ -76,9 +76,6 @@ return {
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
       'rcarriga/nvim-notify',
     },
   },
@@ -163,9 +160,7 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
+    config = function()
       require('which-key').register {
         ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
@@ -177,5 +172,31 @@ return {
         ['<leader>w'] = { name = '[W]indow', _ = 'which_key_ignore' },
       }
     end,
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    opts = {
+      indent = {
+        char = '│',
+        tab_char = '│',
+      },
+      scope = { enabled = false },
+      exclude = {
+        filetypes = {
+          'help',
+          'alpha',
+          'dashboard',
+          'neo-tree',
+          'Trouble',
+          'trouble',
+          'lazy',
+          'mason',
+          'notify',
+          'toggleterm',
+          'lazyterm',
+        },
+      },
+    },
+    main = 'ibl',
   },
 }
