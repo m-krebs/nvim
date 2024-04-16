@@ -253,4 +253,13 @@ return {
       },
     },
   },
+
+  {
+    'folke/trouble.nvim',
+    branch = 'dev',
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    opts = {},
+  },
 }
