@@ -1,13 +1,14 @@
 --  See `:help vim.keymap.set()`
-
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Editor
 -- ctrl+backspace delete previous word
 vim.keymap.set('i', '<C-BS>', '<C-W>')
 vim.keymap.set('i', '<C-H>', '<C-W>')
+vim.keymap.set('i', 'jk', '<Esc>')
 
 -- void
-vim.keymap.set('n', 'Q', '"_')
+vim.keymap.set('n', 'Q', '"_', { desc = 'Start void register' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -27,6 +28,9 @@ vim.keymap.set('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buff
 vim.keymap.set('n', '<leader>`', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+
+-- terminal
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Normal mode in terminal' })
 
 -- quit
 vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
