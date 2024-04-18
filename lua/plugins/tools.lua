@@ -9,6 +9,7 @@ return {
         function()
           require('global-note').toggle_note()
         end,
+        { desc = 'Global Note' },
       },
     },
   },

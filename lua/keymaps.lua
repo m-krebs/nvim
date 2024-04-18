@@ -27,10 +27,13 @@ vim.keymap.set('n', '<leader>wd', '<C-w>c', { desc = 'Close current window' })
 vim.keymap.set('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 vim.keymap.set('n', '<leader>`', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 
-vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>fn', '<cmd>enew<cr>', { desc = 'New File' })
 
 -- terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Normal mode in terminal' })
+
+-- lazy
+vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- quit
 vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
