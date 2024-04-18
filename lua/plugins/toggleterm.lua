@@ -27,6 +27,13 @@ return {
       desc = 'ToggleTerm',
     },
     {
+      -- duplicate from above,
+      '<c-/>',
+      vim_cmd_vcount,
+      mode = { 'n', 't' },
+      desc = 'ToggleTerm',
+    },
+    {
       '<leader>tv',
       function()
         vim_cmd_vcount 'ToggleTerm direction=vertical'
