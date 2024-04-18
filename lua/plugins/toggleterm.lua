@@ -53,7 +53,7 @@ return {
     },
     {
       '<leader>gg',
-      '<cmd>TermExec cmd=lazygit direction=float<cr>',
+      '<cmd>TermExec cmd=lazygit;exit direction=float<cr>',
       desc = 'Lazygit',
     },
   },
