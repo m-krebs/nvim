@@ -254,8 +254,23 @@ return {
     },
   },
 
+  -- Pretty diagnostics, references, quickfix, location lists
   {
     'folke/trouble.nvim',
     branch = 'dev',
+    cmd = { 'Trouble' },
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics',
+      },
+      {
+        '<leader>cs',
+        '<cmd>Trouble [s]ymbols toggle focus=false<cr>',
+        desc = 'Symbols',
+      },
+    },
+    opts = {},
   },
 }
