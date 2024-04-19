@@ -199,4 +199,9 @@ return {
     },
     main = 'ibl',
   },
+  -- show marks in signcolumn
+  {
+    'chentoast/marks.nvim',
+    opts = {},
+  },
 }
