@@ -267,8 +267,8 @@ return {
       },
       {
         '<leader>cs',
-        '<cmd>Trouble [s]ymbols toggle focus=false<cr>',
-        desc = 'Symbols',
+        '<cmd>Trouble symbols toggle focus=false<cr>',
+        desc = '[S]ymbols',
       },
     },
     opts = {},
