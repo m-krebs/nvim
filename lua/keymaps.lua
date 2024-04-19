@@ -39,4 +39,5 @@ vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 
 -- Copilot
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
+vim.keymap.set('i', '<Tab>', '<Plug>(copilot-accept-word)')
+vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
