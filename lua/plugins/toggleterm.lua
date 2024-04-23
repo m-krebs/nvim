@@ -60,7 +60,10 @@ return {
     },
     {
       '<leader>gg',
-      '<cmd>TermExec cmd=lazygit;exit direction=float<cr>',
+      -- '<cmd>TermExec cmd=lazygit;exit direction=float<cr>',
+      function()
+        Utils.terminal { 'lazygit' }
+      end,
       desc = 'Lazygit',
     },
   },
