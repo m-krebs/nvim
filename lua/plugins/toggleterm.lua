@@ -10,7 +10,7 @@ return {
   'akinsho/toggleterm.nvim',
   cmd = { 'ToggleTerm', 'TermExec', 'ToggleTermToggleAll' },
   opts = {
-    direction = 'vertical',
+    direction = 'float',
     size = function(term)
       if term.direction == 'horizontal' then
         return 15
