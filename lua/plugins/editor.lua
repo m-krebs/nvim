@@ -250,6 +250,12 @@ return {
       {
         '<leader>,',
         '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>',
+        desc = 'Switch Buffer',
+      },
+      {
+        '<leader>st',
+        '<cmd>TodoTelescope<cr>',
+        desc = '[S]earch [T]odo',
       },
     },
   },
