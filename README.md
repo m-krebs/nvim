@@ -1,5 +1,7 @@
 # kickstart.nvim
 
+try git please
+
 ## Introduction
 
 A starting point for Neovim that is:
