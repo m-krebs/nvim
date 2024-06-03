@@ -289,7 +289,6 @@ return {
   -- Pretty diagnostics, references, quickfix, location lists
   {
     'folke/trouble.nvim',
-    branch = 'dev',
     cmd = { 'Trouble' },
     keys = {
       {
