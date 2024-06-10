@@ -87,7 +87,6 @@ return {
   -- buffer remove
   {
     'echasnovski/mini.bufremove',
-
     keys = {
       {
         '<leader>bd',
@@ -124,11 +123,21 @@ return {
             {
               name = 'Buffers',
               function()
-                Utils.telescope 'buffers'
+                Utils.telescope('buffers', { sort_mru = true, sort_lastused = true })
               end,
             },
           },
           collections = {
+            git = {
+              tabs = {
+                {
+                  name = 'Commits',
+                  function()
+                    Utils.telescope 'git_commits'
+                  end,
+                },
+              },
+            },
             search = {
               tabs = {
                 {
@@ -223,9 +232,6 @@ return {
       local builtin = require 'telescope.builtin'
       local search = require 'search'
 
-      vim.keymap.set('n', '<leader>/', function()
-        search.open { tab_id = 3 }
-      end, { desc = 'Grep (root dir)' })
       vim.keymap.set('n', '<leader><space>', function()
         search.open()
       end, { desc = '[ ] Find files (root dir)' })
@@ -234,23 +240,32 @@ return {
         builtin.find_files { name = 'Git Files', cwd = vim.fn.stdpath 'config' }
       end, { desc = 'Find Neovim [C]onfig files' })
       -- search
+      vim.keymap.set('n', '<leader>/', function()
+        search.open { tab_name = 'Grep' }
+      end, { desc = 'Grep (root dir)' })
+
       vim.keymap.set('n', '<leader>sC', function()
-        search.open { collection = 'search', tab_id = 3 }
+        search.open { collection = 'search', tab_name = 'Commands' }
       end, { desc = '[S]earch [C]ommands' })
+
       vim.keymap.set('n', '<leader>sh', function()
         search.open { collection = 'search' }
       end, { desc = '[H]elp Pages' })
+
       vim.keymap.set('n', '<leader>sk', function()
-        search.open { collection = 'search', tab_id = 2 }
+        search.open { collection = 'search', tab_name = 'Keymaps' }
       end, { desc = '[K]ey Maps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+
+      vim.keymap.set('n', '<leader>sf', search.open, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = 'Jump to [M]ark' })
       vim.keymap.set('n', '<leader>sM', function()
-        search.open { collection = 'search', tab_id = 4 }
+        search.open { collection = 'search', tab_name = 'Man Pages' }
       end, { desc = '[S]earch [M]an Pages' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sg', function()
+        search.open { tab_name = 'Grep' }
+      end, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -262,6 +277,9 @@ return {
           previewer = false,
         })
       end, { desc = 'Fuzzily search in current [b]uffer' })
+      vim.keymap.set('n', '<leader>,', function()
+        search.open { tab_name = 'Buffers' }
+      end, { desc = 'Switch [B]uffer' })
 
       -- Also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -272,18 +290,6 @@ return {
         }
       end, { desc = '[S]earch [/] in Open Files' })
     end,
-    keys = {
-      {
-        '<leader>,',
-        '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>',
-        desc = 'Switch Buffer',
-      },
-      {
-        '<leader>st',
-        '<cmd>TodoTelescope<cr>',
-        desc = '[S]earch [T]odo',
-      },
-    },
   },
 
   -- Pretty diagnostics, references, quickfix, location lists

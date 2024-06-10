@@ -6,4 +6,9 @@ return {
     },
     enabled = false,
   },
+  {
+    'mgierada/lazydocker.nvim',
+    dependencies = { 'akinsho/toggleterm.nvim' },
+    opts = true,
+  },
 }
