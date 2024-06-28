@@ -11,6 +11,8 @@ return {
   'mfussenegger/nvim-dap',
   -- NOTE: And you can specify dependencies as well
   dependencies = {
+    -- Is required for nvim-dap-ui
+    'nvim-neotest/nvim-nio',
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
