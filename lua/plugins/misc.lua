@@ -6,4 +6,6 @@ return {
     },
     enabled = false,
   },
+  -- HTTP REST-Client Interface
+  { 'mistweaverco/kulala.nvim' },
 }
