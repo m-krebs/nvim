@@ -311,6 +311,11 @@ return {
     opts = {},
   },
   {
+    'rachartier/tiny-inline-diagnostic.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
+  {
     'stevearc/overseer.nvim',
     opts = {},
   },
