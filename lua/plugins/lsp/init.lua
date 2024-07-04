@@ -10,7 +10,12 @@ return {
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
     },
-    config = function()
+    opts = function()
+      return {
+        setup = {},
+      }
+    end,
+    config = function(_, opts)
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -154,12 +159,21 @@ return {
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            local server_opts = vim.tbl_deep_extend('force', {
+              capabilities = vim.deepcopy(capabilities),
+            }, servers[server_name] or {})
+
+            -- checks if there is
+            if opts.setup[server_name] then
+              if opts.setup[server_name](server_name, server_opts) then
+                return
+              end
+            elseif opts.setup['*'] then
+              if opts.setup['*'](server_name, server_opts) then
+                return
+              end
+            end
+            require('lspconfig')[server_name].setup(server_opts)
           end,
         },
       }
