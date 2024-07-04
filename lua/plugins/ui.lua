@@ -62,6 +62,8 @@ return {
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+
+  { 'rcarriga/nvim-notify', opts = { render = 'compact', style = 'static' } },
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   {
     'folke/noice.nvim',
