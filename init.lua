@@ -20,4 +20,4 @@ _G.Utils = require 'util'
 -- that are found under lua/plugins/
 require 'lazy-bootstrap'
 
-vim.cmd 'colorscheme ayu-mirage' -- sets colorscheme
+require 'colorscheme'
