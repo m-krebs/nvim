@@ -16,8 +16,8 @@ require 'autocmds'
 _G.Utils = require 'util'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
--- this loads plugins configured with lazy
--- that are found under lua/plugins/
+-- loads plugins configured with
+-- lazy found under lua/plugins/
 require 'lazy-bootstrap'
 
 require 'colorscheme'
