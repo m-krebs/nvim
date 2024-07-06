@@ -1,3 +1,5 @@
+---@class lazyvim.util.terminal
+---@overload fun(message: string|string[], level: string, opts: LazyTermOpts): LazyFloat
 local M = setmetatable({}, {
   __call = function(m, ...)
     return m.notify(...)
