@@ -12,7 +12,11 @@ return {
     },
     opts = function()
       return {
-        setup = {},
+        setup = {
+          jdtls = function()
+            return true -- let nvim-jdtls handle the setup
+          end,
+        },
       }
     end,
     config = function(_, opts)
