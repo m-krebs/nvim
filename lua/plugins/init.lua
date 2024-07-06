@@ -41,19 +41,12 @@ return {
     },
   },
 
-  -- load themes
+  -- install colorschemes
   {
     'Shatur/neovim-ayu',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = true, -- plugin loads automagically when setting colorscheme foobar
   },
-  {
-    'folke/tokyonight.nvim',
-    config = function()
-      -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
+  'folke/tokyonight.nvim',
   'eldritch-theme/eldritch.nvim',
 
   -- Highlight todo, notes, etc in comments
