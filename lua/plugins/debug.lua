@@ -38,17 +38,6 @@ return {
       { '<leader>db', function () require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
       { '<leader>dB', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Set Breakpoint' },
     },
-    opts = {
-      configurations = {
-        java = {
-          type = 'java',
-          request = 'attach',
-          name = 'Debug (Attach) - Remote',
-          hostName = '127.0.0.1',
-          port = 5006,
-        },
-      },
-    },
     config = function()
       local dap = require 'dap'
       local dapui = require 'dapui'
@@ -58,6 +47,16 @@ return {
       dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
       require('dap-go').setup()
+
+      dap.configurations.java = {
+        {
+          type = 'java',
+          request = 'attach',
+          name = 'Debug (Attach) - Remote',
+          hostName = '127.0.0.1',
+          port = 5005,
+        },
+      }
     end,
   },
   {
