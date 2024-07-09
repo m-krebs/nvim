@@ -10,14 +10,14 @@ function M.notify(message, ...)
   local args = { ... }
   if #args == 1 then
     if type(args[1]) == 'table' then
-      require 'notify'(message, 'info', ...)
+      vim.notify(message, 'info', ...)
     else
-      require 'notify'(message, args[1], {})
+      vim.notify(message, args[1], {})
     end
   elseif #args == 2 then
-    require 'notify'(message, ...)
+    vim.notify(message, ...)
   else
-    require 'notify'(message, 'info', {})
+    vim.notify(message, 'info', {})
   end
 end
 
