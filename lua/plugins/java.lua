@@ -55,10 +55,22 @@ return {
         path.runtimes = {
           -- name has to be valid `ExecutionEnvironment`:
           -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-          -- {
-          --  name = 'JavaSE-1.8',
-          --  path = vim.fn.expand('~/.sdkman/candidates/java/8.0.402-amzn')
-          -- }
+          {
+            name = 'JavaSE-1.8',
+            path = vim.fn.expand '~/.sdkman/candidates/java/8.0.402-albba',
+          },
+          {
+            name = 'JavaSE-11',
+            path = vim.fn.expand '~/.sdkman/candidates/java/11.0.22-albba',
+          },
+          {
+            name = 'JavaSE-17',
+            path = vim.fn.expand '~/.sdkman/candidates/java/17.0.9-zulu',
+          },
+          {
+            name = 'JavaSE-22',
+            path = vim.fn.expand '~/.sdkman/candidates/java/22-zulu',
+          },
         }
 
         cache_vars.paths = path
@@ -67,12 +79,8 @@ return {
       end
 
       local function enable_debugger(bufnr)
-        Utils.notify.info 'Setting up debugger for Java...'
         require('jdtls').setup_dap { hotcodereplace = 'auto' }
         require('jdtls.dap').setup_dap_main_class_configs()
-
-        local opts = { buffer = bufnr }
-        print(opts)
       end
 
       local function jdtls_on_attach(client, bufnr)
@@ -132,9 +140,7 @@ return {
             maven = {
               downloadSources = true,
             },
-            format = {
-              enabled = true,
-            },
+            ['format.settings.url'] = '/home/mkrebs/.local/share/eclipse/intellij-java-google-style.xml',
           },
           signatureHelp = {
             enabled = true,
