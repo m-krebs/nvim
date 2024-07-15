@@ -206,4 +206,5 @@ return {
     'chentoast/marks.nvim',
     opts = {},
   },
+  'nvim-treesitter/nvim-treesitter-context',
 }
