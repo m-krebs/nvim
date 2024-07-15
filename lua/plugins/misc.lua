@@ -13,7 +13,6 @@ return {
   },
   {
     'mistweaverco/kulala.nvim', -- HTTP REST-Client Interface
-    lazy = false,
     opts = {},
     -- stylua: ignore
     keys = {

@@ -106,13 +106,15 @@ return {
               key = 'n',
             },
             {
-              action = [[lua Utils.telescope.config_files()]],
+              -- stylua: ignore
+              action = function() Utils.telescope.config_files() end,
               desc = ' Config',
               icon = ' ',
               key = 'c',
             },
             {
-              action = 'lua require("persistence").load()',
+              -- stylua: ignore
+              action = function() require("persistence").load() end,
               desc = ' Restore Session',
               icon = ' ',
               key = 's',
