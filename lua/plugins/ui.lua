@@ -162,17 +162,42 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('which-key').register {
-        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]ile/find', _ = 'which_key_ignore' },
-        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-        ['<leader>q'] = { name = '[Q]uit/session', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]indow', _ = 'which_key_ignore' },
+    opts = {
+      icons = {
+        rules = false,
+      },
+    },
+    config = function(_, opts)
+      local wk = require 'which-key'
+      wk.add {
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>b_', hidden = true },
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>c_', hidden = true },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>d_', hidden = true },
+        { '<leader>f', group = '[F]ile/find' },
+        { '<leader>f_', hidden = true },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>g_', hidden = true },
+        { '<leader>q', group = '[Q]uit/session' },
+        { '<leader>q_', hidden = true },
+        { '<leader>r', group = '[R]est' },
+        { '<leader>r_', hidden = true },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>s_', hidden = true },
+        { '<leader>t', group = '[T]oggleTerminal' },
+        { '<leader>t_', hidden = true },
+        { '<leader>u', group = 'Options' },
+        { '<leader>u_', hidden = true },
+        { '<leader><tab>', group = 'Tabs' },
+        { '<leader><tab>_', hidden = true },
+        { '<leader>w', group = '[W]indow' },
+        { '<leader>w_', hidden = true },
+        { '<leader>x', group = 'Diagnostics' },
+        { '<leader>x_', hidden = true },
       }
+      wk.setup(opts)
     end,
   },
   {
