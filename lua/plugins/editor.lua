@@ -119,13 +119,12 @@ return {
       {
         'FabianWirth/search.nvim',
         opts = {
-          append_tabs = {
-            {
-              name = 'Buffers',
-              function()
-                Utils.telescope('buffers', { sort_mru = true, sort_lastused = true })
-              end,
-            },
+          -- stylua: ignore
+          tabs = {
+            { name = 'Files', function() Utils.telescope('find_files', { hidden = true }) end, },
+            { name = 'Git files', function() Utils.telescope 'git_files' end, },
+            { name = 'Grep', function() Utils.telescope 'live_grep' end, },
+            { name = 'Buffers', function() Utils.telescope('buffers', { sort_mru = true, sort_lastused = true }) end, },
           },
           collections = {
             git = {
