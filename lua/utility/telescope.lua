@@ -1,3 +1,5 @@
+---@class utility.telescope
+---@overload fun(builtin: string, opts: table)
 local M = setmetatable({}, {
   __call = function(m, ...)
     return m.telescope(...)
@@ -9,7 +11,7 @@ function M.telescope(builtin, opts)
 end
 
 function M.config_files()
-  return Utils.telescope('find_files', { cwd = vim.fn.stdpath 'config' })
+  return M.telescope('find_files', { cwd = vim.fn.stdpath 'config' })
 end
 
 return M

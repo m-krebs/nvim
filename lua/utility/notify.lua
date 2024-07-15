@@ -1,11 +1,14 @@
----@class lazyvim.util.terminal
----@overload fun(message: string|string[], level: string, opts: LazyTermOpts): LazyFloat
+---@class utility.notify
+---@overload fun(message: string|string[], level: string, opts: table): fun()
 local M = setmetatable({}, {
   __call = function(m, ...)
     return m.notify(...)
   end,
 })
 
+---@private
+---@param message string|string[]
+---@param ... any
 function M.notify(message, ...)
   local args = { ... }
   if #args == 1 then
@@ -21,18 +24,26 @@ function M.notify(message, ...)
   end
 end
 
+---@param message string|string[]
+---@param opts table
 function M.info(message, opts)
   M.notify(message, opts)
 end
 
+---@param message string|string[]
+---@param opts table
 function M.warn(message, opts)
   M.notify(message, 'warn', opts)
 end
 
+---@param message string|string[]
+---@param opts table
 function M.error(message, opts)
   M.notify(message, 'error', opts)
 end
 
+---@param message string|string[]
+---@param opts table
 function M.debug(message, opts)
   M.notify(message, 'debug', opts)
 end

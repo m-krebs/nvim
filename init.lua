@@ -13,7 +13,7 @@ require 'keymaps'
 require 'autocmds'
 
 -- [[ Load util functions ]]
-_G.Utils = require 'util'
+_G.Utils = require 'utility'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- loads plugins configured with
