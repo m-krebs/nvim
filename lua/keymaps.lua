@@ -45,7 +45,7 @@ map('n', '<leader>`', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 map('n', '<leader>fn', '<cmd>enew<cr>', { desc = 'New File' })
 
 -- terminal
-map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Normal mode in terminal' })
+-- map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Normal mode in terminal' })
 
 -- lazy
 map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })

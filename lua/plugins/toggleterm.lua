@@ -38,7 +38,7 @@ return {
       function()
         vim_cmd_vcount 'ToggleTerm direction=vertical'
       end,
-      mode = { 'n', 't' },
+      mode = { 'n' },
       desc = 'ToggleTerm [v]ertical',
     },
     {
@@ -47,7 +47,7 @@ return {
         vim_cmd_vcount 'ToggleTerm direction=horizontal'
       end,
       '<cmd>ToggleTerm direction=horizontal size=20<cr>',
-      mode = { 'n', 't' },
+      mode = { 'n' },
       desc = 'ToggleTerm [h]orizontal',
     },
     {
@@ -55,7 +55,7 @@ return {
       function()
         vim_cmd_vcount 'ToggleTerm direction=float'
       end,
-      mode = { 'n', 't' },
+      mode = { 'n' },
       desc = 'ToggleTerm [f]loat',
     },
     {
