@@ -1,3 +1,8 @@
+vim.filetype.add {
+  extension = {
+    ['http'] = 'http',
+  },
+}
 return {
   -- Session management
   {
@@ -13,7 +18,16 @@ return {
   },
   {
     'mistweaverco/kulala.nvim', -- HTTP REST-Client Interface
+    ft = 'http',
     opts = {},
+    dependencies = {
+      {
+        'nvim-treesitter/nvim-treesitter',
+        opts = {
+          ensure_installed = { 'http', 'graphql' },
+        },
+      },
+    },
     -- stylua: ignore
     keys = {
       {"<leader>r", "", desc = "+[R]est"},
