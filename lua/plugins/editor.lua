@@ -318,4 +318,16 @@ return {
     'stevearc/overseer.nvim',
     opts = {},
   },
+  {
+    'gabrielpoca/replacer.nvim',
+    keys = {
+      {
+        '<leader>h',
+        function()
+          require('replacer').run()
+        end,
+        desc = 'Replacer',
+      },
+    },
+  },
 }
