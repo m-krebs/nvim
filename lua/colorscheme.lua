@@ -1,4 +1,4 @@
-local colorscheme = 'ayu-mirage'
+local colorscheme = 'eldritch'
 
 local is_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
 if not is_ok then
