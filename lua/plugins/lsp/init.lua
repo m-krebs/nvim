@@ -1,6 +1,7 @@
 return {
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    ft = { 'lua' },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for neovim
       'williamboman/mason.nvim',

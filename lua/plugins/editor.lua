@@ -316,6 +316,22 @@ return {
   },
   {
     'stevearc/overseer.nvim',
+    lazy = true,
+    cmd = {
+      'OverseerBuild',
+      'OverseerClearCache',
+      'OverseerClose',
+      'OverseerDeleteBundle',
+      'OverseerLoadBundle',
+      'OverseerInfo',
+      'OverseerOpen',
+      'OverseerQuickAction',
+      'OverseerRun',
+      'OverseerRunCmd',
+      'OverseerSaveBundle',
+      'OverseerTaskAction',
+      'OverseerToggle',
+    },
     opts = {},
   },
   {
