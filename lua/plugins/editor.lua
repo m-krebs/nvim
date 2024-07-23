@@ -112,8 +112,8 @@ return {
   },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    branch = '0.1.x',
+    -- cmd = { 'Telescope' },
+    version = '*', -- stable (excludes prereleases)
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
@@ -311,7 +311,7 @@ return {
   },
   {
     'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'VeryLazy',
+    event = 'BufRead',
     opts = {},
   },
   {

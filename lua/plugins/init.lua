@@ -1,8 +1,9 @@
 return {
+  { 'folke/lazy.nvim', tag = 'stable' },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
 
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -28,17 +29,15 @@ return {
   },
 
   -- install colorschemes
-  {
-    'Shatur/neovim-ayu',
-    lazy = true, -- plugin loads automagically when setting colorscheme foobar
-  },
-  'folke/tokyonight.nvim',
-  'eldritch-theme/eldritch.nvim',
+  -- set priority to 1000 of the primary one
+  { 'Shatur/neovim-ayu', lazy = true },
+  { 'folke/tokyonight.nvim', lazy = true },
+  { 'eldritch-theme/eldritch.nvim', lazy = true, priority = 1000 },
 
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
-    event = 'VimEnter',
+    event = 'BufRead',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
     keys = {
@@ -52,6 +51,7 @@ return {
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    event = 'VeryLazy',
     config = function()
       -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
@@ -86,6 +86,7 @@ return {
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    event = 'BufReadPre',
     build = ':TSUpdate',
     config = function()
       ---@diagnostic disable-next-line: missing-fields

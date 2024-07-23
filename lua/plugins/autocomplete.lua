@@ -1,6 +1,7 @@
 return {
   {
     'github/copilot.vim',
+    event = 'BufRead',
   },
   { -- Manages completion sources
     'hrsh7th/nvim-cmp',

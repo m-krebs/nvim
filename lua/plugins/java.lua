@@ -1,6 +1,7 @@
 return {
   {
     'mfussenegger/nvim-jdtls',
+    ft = { 'java' },
     config = function()
       local java_cmds = vim.api.nvim_create_augroup('java_cmds', { clear = true })
       local cache_vars = {}

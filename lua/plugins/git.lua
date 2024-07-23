@@ -1,7 +1,23 @@
 return {
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    cmd = {
+      'Git',
+      'G',
+      'Gdiff',
+      'Gedit',
+      'Gdiffsplit',
+      'Gread',
+      'Gwrite',
+      'Ggrep',
+      'GMove',
+      'GDelete',
+      'GBrowse',
+    },
+  },
   {
     'lewis6991/gitsigns.nvim',
+    event = 'BufRead',
     opts = {
       signs = {
         add = { text = '▎' },
