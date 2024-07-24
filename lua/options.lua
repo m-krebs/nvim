@@ -38,4 +38,15 @@ opt.wrap = false -- Disable line wrap
 vim.g.copilot_no_tab_map = true
 
 -- Disables permanent showing of diagnostics
-vim.diagnostic.config { virtual_text = false } -- required for tiny-inline-diagnostic.nvim
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = {
+    enable = true,
+    text = {
+      ['ERROR'] = '',
+      ['WARN'] = '',
+      ['INFO'] = '',
+      ['HINT'] = '',
+    },
+  },
+} -- required for tiny-inline-diagnostic.nvim
