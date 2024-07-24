@@ -53,6 +53,13 @@ return {
           port = 5005,
         },
       }
+
+      -- set debugger icons
+      vim.fn.sign_define('DapStopped', { text = '󰁕 ', linehl = 'DiagnosticWarn' })
+      vim.fn.sign_define('DapBreakpoint', { text = ' ' })
+      vim.fn.sign_define('DapBreakpointCondition', { text = ' ' })
+      vim.fn.sign_define('DapBreakpointRejected', { text = ' ', linehl = 'DiagnosticError' })
+      vim.fn.sign_define('DapLogPoint', { text = '.>' })
     end,
   },
   {
