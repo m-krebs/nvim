@@ -14,14 +14,10 @@ return {
         lsp_fallback = true,
       },
       formatters = {
-        kulala_fmt = {
+        kulala = {
           command = 'kulala-fmt',
-          args = function(context)
-            return { context.filename }
-          end,
+          args = { '$FILENAME' },
           stdin = false,
-          ignore_exitcode = false,
-          timeout_ms = 5000,
         },
       },
       formatters_by_ft = {
@@ -29,7 +25,8 @@ return {
         json = { 'prettier' },
         javascript = { 'prettier' },
         html = { 'prettier' },
-        http = { 'kulala_fmt' },
+        http = { 'kulala' },
+        rest = { 'kulala' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
