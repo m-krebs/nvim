@@ -32,9 +32,11 @@ return {
     keys = {
       {"<leader>r", "", desc = "+[R]est"},
       {"<leader>rr", function () require('kulala').run() end, desc = 'Run request'},
+      {"<leader>rR", function () require('kulala').replay() end, desc = 'Replay last request'},
       {"<leader>r[", function () require('kulala').jump_prev() end, desc = 'Jump to previous'},
       {"<leader>r]", function () require('kulala').jump_next() end, desc = 'Jump to next'},
-      {"<leader>rv", function () require('kulala').toggle_view() end, desc = 'Toggle view'}
+      {"<leader>rv", function () require('kulala').toggle_view() end, desc = 'Toggle view'},
+      {"<leader>r/", function () require('kulala').search() end, desc = 'Search request files'},
     },
   },
   {
