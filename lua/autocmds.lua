@@ -46,7 +46,7 @@ autocmd('User', {
       'commit',
       lockfile,
       '-m',
-      'Update lazy-lock.json',
+      '[auto] Update lazy-lock.json',
     }
 
     local success, process = pcall(function()
