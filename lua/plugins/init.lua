@@ -42,6 +42,7 @@ return {
   { 'Shatur/neovim-ayu', lazy = true },
   { 'folke/tokyonight.nvim', lazy = true },
   { 'eldritch-theme/eldritch.nvim', lazy = true, priority = 1000 },
+  { 'rebelot/kanagawa.nvim' },
 
   -- Highlight todo, notes, etc in comments
   {
