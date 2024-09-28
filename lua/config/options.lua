@@ -16,7 +16,7 @@ opt.mouse = 'a' -- enable mouse mode
 opt.number = true -- print line number
 opt.relativenumber = true -- relative line number
 
-opt.scrolloff = 999
+opt.scrolloff = 4
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true
