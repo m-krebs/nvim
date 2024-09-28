@@ -37,28 +37,6 @@ return {
     },
   },
 
-  -- install colorschemes
-  -- set priority to 1000 of the primary one
-  { 'Shatur/neovim-ayu', lazy = true },
-  { 'folke/tokyonight.nvim', lazy = true },
-  { 'eldritch-theme/eldritch.nvim', lazy = true, priority = 1000 },
-  { 'rebelot/kanagawa.nvim' },
-
-  -- Highlight todo, notes, etc in comments
-  {
-    'folke/todo-comments.nvim',
-    event = 'BufRead',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
-    keys = {
-      {
-        '<leader>st',
-        '<cmd>TodoTelescope<cr>',
-        desc = '[S]earch [T]odo',
-      },
-    },
-  },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     event = 'VeryLazy',
