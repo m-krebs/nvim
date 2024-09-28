@@ -236,14 +236,15 @@ return {
   },
   'nvim-treesitter/nvim-treesitter-context',
 
-  --  _______________________
-  -- | install colorschemes |
-  --  ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅ ̅
+  --  _______________
+  -- | Colorschemes |
+  -- ---------------
+
   -- set priority to 1000 of the primary one
   { 'Shatur/neovim-ayu', lazy = true, priority = 1000 },
   { 'folke/tokyonight.nvim', lazy = true },
   { 'eldritch-theme/eldritch.nvim', lazy = true },
-  { 'rebelot/kanagawa.nvim' },
+  { 'rebelot/kanagawa.nvim', lazy = true },
 
   -- Highlight todo, notes, etc in comments
   {
