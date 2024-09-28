@@ -1,6 +1,6 @@
 return {
   { 'folke/lazy.nvim', tag = 'stable' },
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
@@ -21,6 +21,7 @@ return {
         },
       },
       formatters_by_ft = {
+        sh = { 'shfmt' },
         lua = { 'stylua' },
         json = { 'prettier' },
         javascript = { 'prettier' },
@@ -56,8 +57,6 @@ return {
       require('mini.icons').setup()
 
       -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
@@ -79,18 +78,48 @@ return {
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'http' },
-        auto_install = true,
+        ensure_installed = {
+          'bash',
+          'c',
+          'html',
+          'lua',
+          'markdown',
+          'vim',
+          'vimdoc',
+          'http',
+          'query',
+          'rust',
+          'json',
+          'java',
+          'javascript',
+          'python',
+        },
+        auto_install = true, -- auto installs parser if not installed on BufReadPre
         highlight = { enable = true },
         indent = { enable = true },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['ac'] = '@class.outer',
+              ['ic'] = '@class.inner',
+              ['as'] = { query = '@scope', query_grouup = 'locals', desc = 'Select language scope' },
+            },
+            selection_modes = {
+              ['@parameter.outer'] = 'v', --charwise
+              ['@function.outer'] = 'V', -- linewise
+              ['@class.outer'] = '<c-v>', -- blockwise
+            },
+            include_surrounding_whitespace = true,
+          },
+        },
       }
-
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
 }
