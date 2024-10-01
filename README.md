@@ -1,5 +1,3 @@
-# Neovim dotfiles
-
 <div align='center'>
    <p>
       <a href="https://github.com/m-krebs/nvim/blob/main/LICENSE">
@@ -15,7 +13,6 @@
          </picture>
        </a>
    </p>
-   <hr>
    <p>
      <div>My personal Neovim configuration.</div>
    </p>
