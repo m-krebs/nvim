@@ -51,3 +51,9 @@ vim.diagnostic.config {
     },
   },
 } -- required for tiny-inline-diagnostic.nvim
+
+vim.filetype.add {
+  extension = {
+    ['http'] = 'http',
+  },
+}

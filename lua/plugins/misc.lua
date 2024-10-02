@@ -1,8 +1,3 @@
-vim.filetype.add {
-  extension = {
-    ['http'] = 'http',
-  },
-}
 return {
   -- Session management
   {
