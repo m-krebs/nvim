@@ -69,4 +69,13 @@ return {
       },
     },
   },
+  {
+    'mistricky/codesnap.nvim',
+    build = 'make build_generator',
+    cmd = 'CodeSnap',
+  },
+  {
+    'meznaric/key-analyzer.nvim',
+    opts = {},
+  },
 }
