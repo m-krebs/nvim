@@ -332,6 +332,23 @@ return {
       'OverseerTaskAction',
       'OverseerToggle',
     },
+    keys = {
+      {
+        '<leader>o',
+        '<cmd>OverseerRun<cr>',
+        desc = 'Overseer Run',
+      },
+      {
+        '<leader>ot',
+        '<cmd>OverseerToggle<cr>',
+        desc = 'Overseer [T]oggle',
+      },
+      {
+        '<leader>oq',
+        '<cmd>OverseerQuickAction<cr>',
+        desc = 'Overseer [Q]uickAction',
+      },
+    },
     opts = {},
   },
   {
