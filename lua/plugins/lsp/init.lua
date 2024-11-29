@@ -51,6 +51,9 @@ return {
           jdtls = function()
             return true -- let nvim-jdtls handle the setup
           end,
+          rust_analyzer = function()
+            return true -- let rustaceanvim handle the setup
+          end,
         },
       }
     end,
@@ -104,7 +107,7 @@ return {
         -- clangd = {},
         -- gopls = {},
         pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
