@@ -32,6 +32,7 @@ return {
       {"<leader>r]", function () require('kulala').jump_next() end, desc = 'Jump to next'},
       {"<leader>rv", function () require('kulala').toggle_view() end, desc = 'Toggle view'},
       {"<leader>r/", function () require('kulala').search() end, desc = 'Search request files'},
+      {"<leader>rs", function () require('kulala').scratchpad() end, desc = 'Open Scratchpad'},
     },
   },
   {
