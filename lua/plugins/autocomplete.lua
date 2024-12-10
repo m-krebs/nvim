@@ -2,6 +2,10 @@ return {
   {
     'github/copilot.vim',
     event = 'BufRead',
+    keys = {
+      { '<Tab>', '<Plug>(copilot-accept-word)', mode = 'i' },
+      { '<C-L>', 'copilot#Accept("\\<CR>")', mode = 'i', expr = true, replace_keycodes = false },
+    },
   },
   { -- Manages completion sources
     'hrsh7th/nvim-cmp',

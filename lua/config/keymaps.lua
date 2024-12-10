@@ -52,7 +52,3 @@ map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
-
--- Copilot
-map('i', '<Tab>', '<Plug>(copilot-accept-word)')
-map('i', '<C-L>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
