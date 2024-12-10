@@ -89,7 +89,7 @@ return {
       local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
       local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
 
-      local header = ('Good %s, [ %s ]'):format(day_part, username)
+      local header = ('Good %s { %s }'):format(day_part, username)
 
       header = string.rep('\n', 8) .. "I'm using neovim (BTW)" .. '\n\n\n' .. header .. '\n\n\n'
 
