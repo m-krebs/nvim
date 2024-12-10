@@ -260,5 +260,13 @@ return {
     },
   },
 
-  { 'nvchad/minty', lazy = true, dependencies = { 'nvchad/volt', lazy = true } },
+  {
+    'nvzone/minty',
+    lazy = true,
+    cmd = {
+      'Huefy',
+      'Shades',
+    },
+    dependencies = { 'nvzone/volt', lazy = true },
+  },
 }
