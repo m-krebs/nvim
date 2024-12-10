@@ -36,9 +36,11 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
+-- disables copilot autocomplete on tab
 vim.g.copilot_no_tab_map = true
 
 -- Disables permanent showing of diagnostics
+-- required for tiny-inline-diagnostic.nvim
 vim.diagnostic.config {
   virtual_text = false,
   signs = {
@@ -50,7 +52,7 @@ vim.diagnostic.config {
       ['HINT'] = '',
     },
   },
-} -- required for tiny-inline-diagnostic.nvim
+}
 
 vim.filetype.add {
   extension = {
