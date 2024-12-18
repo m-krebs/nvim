@@ -106,7 +106,9 @@ return {
             },
             {
               -- stylua: ignore
-              action = function() Utils.telescope.config_files() end,
+              action = function ()
+                require('fzf-lua').files({ cwd = vim.fn.stdpath('config')})
+              end,
               desc = ' Config',
               icon = ' ',
               key = 'c',
@@ -235,15 +237,17 @@ return {
   },
   'nvim-treesitter/nvim-treesitter-context',
 
-  --  _______________
-  -- | Colorschemes |
-  -- ---------------
-
-  -- set priority to 1000 of the primary one
-  { 'Shatur/neovim-ayu', lazy = true, priority = 1000 },
-  { 'folke/tokyonight.nvim', lazy = true },
-  { 'eldritch-theme/eldritch.nvim', lazy = true },
-  { 'rebelot/kanagawa.nvim', lazy = true },
+  --- Colorschemes ---
+  {
+    'Shatur/neovim-ayu',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'ayu'
+    end,
+  },
+  { 'folke/tokyonight.nvim', event = 'VeryLazy' },
+  { 'eldritch-theme/eldritch.nvim', event = 'VeryLazy' },
+  { 'rebelot/kanagawa.nvim', event = 'VeryLazy' },
 
   -- Highlight todo, notes, etc in comments
   {
@@ -254,7 +258,7 @@ return {
     keys = {
       {
         '<leader>st',
-        '<cmd>TodoTelescope<cr>',
+        '<cmd>TodoFzfLua<cr>',
         desc = '[S]earch [T]odo',
       },
     },
@@ -268,5 +272,10 @@ return {
       'Shades',
     },
     dependencies = { 'nvzone/volt', lazy = true },
+  },
+  {
+    'rachartier/tiny-inline-diagnostic.nvim',
+    event = 'BufRead',
+    opts = {},
   },
 }
