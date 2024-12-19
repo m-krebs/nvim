@@ -25,6 +25,9 @@ return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
+    config = function()
+      require('fzf-lua').register_ui_select()
+    end,
     opts = {
       files = {
         formatter = 'path.filename_first',
