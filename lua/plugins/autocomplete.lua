@@ -5,7 +5,12 @@ return {
     lazy = false,
     version = 'v0.*',
     opts = {
-      keymap = { preset = 'enter' },
+      keymap = {
+        preset = 'enter',
+        cmdline = {
+          preset = 'default',
+        },
+      },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
@@ -16,7 +21,7 @@ return {
       completion = {
         menu = {
           draw = {
-            columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
+            columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind' } },
           },
         },
       },
