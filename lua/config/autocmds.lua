@@ -7,7 +7,7 @@ end
 local autocmd = vim.api.nvim_create_autocmd
 
 -- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd('BufReadPost', {
+autocmd('BufReadPost', {
   group = augroup 'last_loc',
   callback = function(event)
     local exclude = { 'gitcommit' }
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 -- highlight text when yanking | `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
+autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = augroup 'highlight-yank',
   callback = function()
