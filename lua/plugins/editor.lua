@@ -1,5 +1,5 @@
 return {
-  -- { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
   { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
   {
     'folke/flash.nvim',
