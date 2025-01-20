@@ -41,11 +41,6 @@ return {
             treesitter = { 'lsp' },
           },
         },
-        list = {
-          selection = {
-            preselect = true,
-          },
-        },
       },
       signature = {
         enabled = true,
