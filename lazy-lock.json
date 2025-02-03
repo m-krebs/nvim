@@ -55,6 +55,7 @@
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "replacer.nvim": { "branch": "master", "commit": "32e1713230844fa52f7f0598c59295de3c90dc95" },
   "rustaceanvim": { "branch": "master", "commit": "0a1876b970ab946be3f4d341e9d743a5d62d646a" },
+  "snacks.nvim": { "branch": "main", "commit": "43c884478d65e014ffd7dc04e32cdaa8305a7a28" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "2c50854895c9b553482d4289976194a477b41b8f" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "toggleterm.nvim": { "branch": "main", "commit": "e76134e682c1a866e3dfcdaeb691eb7b01068668" },

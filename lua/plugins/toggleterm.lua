@@ -61,7 +61,7 @@ return {
     {
       '<leader>gg',
       function()
-        Utils.terminal { 'lazygit' }
+        Snacks.lazygit()
       end,
       desc = 'Lazygit',
     },
