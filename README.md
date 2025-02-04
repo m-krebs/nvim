@@ -116,3 +116,4 @@ choco install -y neovim git ripgrep wget fd unzip gzip mingw make
 ```
 
 After that you can follow the [Installinstallation) section.
+
