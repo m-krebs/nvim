@@ -1,6 +1,7 @@
 return {
   {
     'folke/neoconf.nvim',
+    version = '*',
     opts = true,
   },
   {
@@ -10,6 +11,7 @@ return {
       'saghen/blink.cmp',
       {
         'folke/lazydev.nvim',
+        version = '*',
         ft = 'lua',
         opts = {
           library = {
@@ -18,7 +20,7 @@ return {
         },
       },
       'williamboman/mason.nvim', -- lsp package manager
-      'williamboman/mason-lspconfig.nvim',
+      { 'williamboman/mason-lspconfig.nvim', version = '*' },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.

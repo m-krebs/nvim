@@ -1,9 +1,10 @@
 return {
   {
     'mfussenegger/nvim-dap',
+    version = '*',
     event = 'BufReadPre *',
     dependencies = {
-      'nvim-neotest/nvim-nio', -- Is required for nvim-dap-ui
+      { 'nvim-neotest/nvim-nio', version = '*' }, -- Is required for nvim-dap-ui
 
       -- Installs the debug adapters for you
       'williamboman/mason.nvim',
@@ -23,7 +24,7 @@ return {
       },
 
       -- Add your own debuggers here
-      'leoluz/nvim-dap-go',
+      { 'leoluz/nvim-dap-go', version = '*' },
     },
     -- stylua: ignore
     keys = {

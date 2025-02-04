@@ -3,6 +3,7 @@ return {
   { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
   {
     'folke/flash.nvim',
+    version = '*',
     event = 'VeryLazy',
     vscode = true,
     opts = {
@@ -52,6 +53,7 @@ return {
   -- Pretty diagnostics, references, quickfix, location lists
   {
     'folke/trouble.nvim',
+    version = '*',
     cmd = { 'Trouble' },
     keys = {
       {
@@ -69,6 +71,7 @@ return {
   },
   {
     'stevearc/overseer.nvim',
+    version = '*',
     lazy = true,
     cmd = {
       'OverseerBuild',

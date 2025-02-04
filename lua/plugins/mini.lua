@@ -1,6 +1,7 @@
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    version = '*',
     event = 'VeryLazy',
     config = function()
       -- Examples:
@@ -33,6 +34,7 @@ return {
   },
   {
     'echasnovski/mini.files',
+    version = '*',
     opts = {
       windows = {
         preview = true,
@@ -96,6 +98,7 @@ return {
   -- buffer remove
   {
     'echasnovski/mini.bufremove',
+    version = '*',
     keys = {
       {
         '<leader>bd',

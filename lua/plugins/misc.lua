@@ -13,6 +13,7 @@ return {
   },
   {
     'mistweaverco/kulala.nvim', -- HTTP REST-Client Interface
+    version = '*',
     ft = 'http',
     opts = {},
     dependencies = {

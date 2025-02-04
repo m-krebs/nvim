@@ -1,6 +1,7 @@
 return {
   {
     'akinsho/bufferline.nvim',
+    version = '*',
     event = 'VeryLazy',
     keys = {
       { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle [p]in' },
@@ -65,12 +66,14 @@ return {
 
   {
     'rcarriga/nvim-notify',
+    version = '*',
     opts = { render = 'compact', style = 'static', top_down = false },
   },
 
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   {
     'folke/noice.nvim',
+    version = '*',
     event = 'VeryLazy',
     opts = {
       presets = {
@@ -176,6 +179,7 @@ return {
   },
   {
     'folke/which-key.nvim',
+    version = '*',
     event = 'VeryLazy',
     opts = {
       icons = {
@@ -217,6 +221,7 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    version = '*',
     event = 'BufRead',
     opts = {
       indent = {
@@ -264,6 +269,7 @@ return {
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
+    version = '*',
     event = 'BufRead',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
