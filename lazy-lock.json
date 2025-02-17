@@ -37,6 +37,7 @@
   "minty": { "branch": "main", "commit": "6dce9f097667862537823d515a0250ce58faab05" },
   "neoconf.nvim": { "branch": "main", "commit": "054c602dcf143337151ecaa7fd4465ecfa7d27f0" },
   "neovim-ayu": { "branch": "master", "commit": "283badaa983234c90e857c12c1f1c18e1544360a" },
+  "nerdy.nvim": { "branch": "main", "commit": "a086fa89a0716d5a45c6c1bd3804e238ac87eaab" },
   "noice.nvim": { "branch": "main", "commit": "424053c6de606701e5b5129d1a851a87ef249f65" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
   "nvim-dap": { "branch": "master", "commit": "04ce47fc5a6ef2b717f33c320fc003091cebac40" },
