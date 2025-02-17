@@ -260,6 +260,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'ayu'
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#34383f' })
     end,
   },
   { 'folke/tokyonight.nvim', event = 'VeryLazy' },
