@@ -27,14 +27,15 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
     config = function()
-      -- Register fzf-lua as the UI interface for `vim.ui.select`
-      require('fzf-lua').register_ui_select()
+      local fzflua = require 'fzf-lua'
+
+      fzflua.register_ui_select()
+      fzflua.setup {
+        files = {
+          formatter = 'path.filename_first',
+        },
+      }
     end,
-    opts = {
-      files = {
-        formatter = 'path.filename_first',
-      },
-    },
     keys = {
       { '<leader><space>', '<cmd>FzfLua files<CR>', desc = 'Find files' },
       { '<leader>sb', '<cmd>FzfLua blines<CR>', desc = 'FuzzyFind [b]uffer' },
