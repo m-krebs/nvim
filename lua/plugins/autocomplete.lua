@@ -7,7 +7,9 @@ return {
     opts = {
       keymap = {
         preset = 'enter',
-        cmdline = {},
+      },
+      cmdline = {
+        keymap = {},
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
