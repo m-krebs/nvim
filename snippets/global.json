@@ -1,0 +1,12 @@
+{
+  "copyright": {
+    "prefix": "cr",
+    "body": [
+      "Copyright (c) ${CURRENT_YEAR} Michael Krebs. All Rights Reserved."
+    ]
+  },
+  "name": {
+    "prefix": "name",
+    "body": ["Michael Krebs"]
+  }
+}
