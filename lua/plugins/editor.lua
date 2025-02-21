@@ -122,12 +122,4 @@ return {
       },
     },
   },
-  {
-    'brianhuster/autosave.nvim',
-    event = 'InsertEnter',
-    cmd = 'Autosave',
-    config = function()
-      vim.g.autosave_disable_inside_paths = { vim.fn.stdpath 'config', '~/.local/share/chezmoi/lib/external_nvim' }
-    end,
-  },
 }
