@@ -119,21 +119,21 @@ return {
         function()
           require('doing').add()
         end,
-        { desc = '[D]oing: [A]dd' },
+        desc = '[D]oing: [A]dd',
       },
       {
         '<leader>dn',
         function()
           require('doing').done()
         end,
-        { desc = '[D]oing: Do[n]e' },
+        desc = '[D]oing: Do[n]e',
       },
       {
         '<leader>de',
         function()
           require('doing').edit()
         end,
-        { desc = '[D]oing: [E]dit' },
+        desc = '[D]oing: [E]dit',
       },
     },
   },
