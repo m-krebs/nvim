@@ -63,7 +63,6 @@ return {
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-
   {
     'rcarriga/nvim-notify',
     version = '*',
@@ -94,88 +93,6 @@ return {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
     },
-  },
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    opts = function()
-      local hour = tonumber(vim.fn.strftime '%H')
-      local part_id = math.floor((hour + 4) / 8) + 1
-      local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
-      local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
-
-      local header = ('Good %s { %s }'):format(day_part, username)
-
-      header = string.rep('\n', 8) .. "I'm using neovim (BTW)" .. '\n\n\n' .. header .. '\n\n\n'
-
-      local opts = {
-        theme = 'doom',
-        config = {
-          header = vim.split(header, '\n'),
-          center = {
-            {
-              action = 'ene | startinsert',
-              desc = ' New File',
-              icon = ' ',
-              key = 'n',
-            },
-            {
-              -- stylua: ignore
-              action = function ()
-                require('fzf-lua').files({ cwd = vim.fn.stdpath('config')})
-              end,
-              desc = ' Config',
-              icon = ' ',
-              key = 'c',
-            },
-            {
-              -- stylua: ignore
-              action = function() require("persistence").load() end,
-              desc = ' Restore Session',
-              icon = ' ',
-              key = 's',
-            },
-            {
-              action = 'Lazy',
-              desc = ' Lazy',
-              icon = '󰒲 ',
-              key = 'l',
-            },
-            {
-              action = 'qa',
-              desc = ' Quit',
-              icon = ' ',
-              key = 'q',
-            },
-          },
-          -- make footer one line (plugins startuptime)
-          footer = function()
-            local stats = require('lazy').stats()
-            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            return { 'loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
-          end,
-        },
-      }
-
-      for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(' ', 20 - #button.desc)
-        button.key_format = '  %s'
-        button.key_hl = 'String'
-      end
-
-      -- close Lazy and re-open when the dashboard is ready
-      if vim.o.filetype == 'lazy' then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd('User', {
-          pattern = 'DashboardLoaded',
-          callback = function()
-            require('lazy').show()
-          end,
-        })
-      end
-
-      return opts
-    end,
   },
   {
     'folke/which-key.nvim',
@@ -254,19 +171,6 @@ return {
   },
   'nvim-treesitter/nvim-treesitter-context',
 
-  --- Colorschemes ---
-  {
-    'Shatur/neovim-ayu',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'ayu'
-      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#34383f' })
-    end,
-  },
-  { 'folke/tokyonight.nvim', event = 'VeryLazy' },
-  { 'eldritch-theme/eldritch.nvim', event = 'VeryLazy' },
-  { 'rebelot/kanagawa.nvim', event = 'VeryLazy' },
-
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
@@ -279,32 +183,6 @@ return {
         '<leader>st',
         '<cmd>TodoFzfLua<cr>',
         desc = '[S]earch [T]odo',
-      },
-    },
-  },
-
-  {
-    'nvzone/minty',
-    lazy = true,
-    cmd = {
-      'Huefy',
-      'Shades',
-    },
-    dependencies = { 'nvzone/volt', lazy = true },
-  },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'BufRead',
-    opts = {},
-  },
-  {
-    'rachartier/tiny-glimmer.nvim',
-    event = 'VeryLazy',
-    opts = {
-      overwrite = {
-        undo = {
-          enabled = true,
-        },
       },
     },
   },

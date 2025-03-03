@@ -58,12 +58,5 @@ return {
       mode = { 'n' },
       desc = 'ToggleTerm [f]loat',
     },
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
   },
 }
