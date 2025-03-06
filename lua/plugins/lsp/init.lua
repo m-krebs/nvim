@@ -1,13 +1,9 @@
 return {
   {
-    'folke/neoconf.nvim',
-    version = '*',
-    opts = true,
-  },
-  {
     'neovim/nvim-lspconfig',
-    event = 'BufReadPre',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
+      { 'folke/neoconf.nvim', version = '*', cmd = 'Neoconf', opts = {} },
       'saghen/blink.cmp',
       {
         'folke/lazydev.nvim',
