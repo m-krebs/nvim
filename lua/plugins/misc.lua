@@ -37,7 +37,7 @@ return {
     },
   },
   {
-    'MeanderingProgrammer/markdown.nvim',
+    'MeanderingProgrammer/render-markdown.nvim',
     ft = 'markdown',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
