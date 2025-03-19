@@ -2,25 +2,17 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets',
-    -- event = 'InsertEnter',
     version = 'v0.*',
     opts = {
       cmdline = {
-        keymap = {},
+        keymap = {
+          ['<Tab>'] = { 'show', 'accept' },
+        },
         enabled = true,
-        sources = function()
-          if vim.fn.getcmdtype() == ':' then
-            return { 'cmdline' }
-          end
-          return {}
-        end,
         completion = {
           menu = {
-            auto_show = function(ctx)
-              return ctx.mode ~= 'cmdline'
-            end,
+            auto_show = true,
           },
-          ghost_text = { enabled = true },
         },
       },
       keymap = {
