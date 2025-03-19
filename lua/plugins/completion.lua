@@ -2,14 +2,29 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets',
-    lazy = false,
+    -- event = 'InsertEnter',
     version = 'v0.*',
     opts = {
-      keymap = {
-        preset = 'enter',
-      },
       cmdline = {
         keymap = {},
+        enabled = true,
+        sources = function()
+          if vim.fn.getcmdtype() == ':' then
+            return { 'cmdline' }
+          end
+          return {}
+        end,
+        completion = {
+          menu = {
+            auto_show = function(ctx)
+              return ctx.mode ~= 'cmdline'
+            end,
+          },
+          ghost_text = { enabled = true },
+        },
+      },
+      keymap = {
+        preset = 'enter',
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
@@ -26,9 +41,6 @@ return {
         },
         menu = {
           border = 'single',
-          auto_show = function(ctx)
-            return ctx.mode ~= 'cmdline'
-          end,
           draw = {
             columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind' } },
             components = {
