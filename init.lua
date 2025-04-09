@@ -21,8 +21,6 @@ _G.Utils = require 'utility'
 -- handles plugins in lua/plugins/
 require 'config.lazy_setup'
 
-require 'config.colorscheme'
-
 -- workaround for rust-analyzer server cancelled request
 for _, method in ipairs { 'textDocument/diagnostic', 'workspace/diagnostic' } do
   local default_diagnostic_handler = vim.lsp.handlers[method]
