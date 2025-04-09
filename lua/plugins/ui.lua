@@ -260,16 +260,17 @@ return {
   --- Colorschemes ---
   {
     'Shatur/neovim-ayu',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'ayu'
-      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#34383f' })
-    end,
+    event = 'VeryLazy', -- priority = 1000, config = function() vim.cmd.colorscheme 'ayu' vim.api.nvim_set_hl(0, 'LineNr', { fg = '#34383f' }) end,
   },
   {
-    'folke/tokyonight.nvim',
-    event = 'VeryLazy',
+    'sainnhe/sonokai',
+    priority = 1000,
+    config = function()
+      vim.g.sonokai_style = 'shusia'
+      vim.cmd.colorscheme 'sonokai'
+    end,
   },
+  { 'folke/tokyonight.nvim', event = 'VeryLazy' },
   { 'eldritch-theme/eldritch.nvim', event = 'VeryLazy' },
   { 'rebelot/kanagawa.nvim', event = 'VeryLazy' },
 
