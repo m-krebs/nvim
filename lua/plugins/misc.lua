@@ -141,4 +141,8 @@ return {
     '2kabhishek/nerdy.nvim',
     cmd = 'Nerdy',
   },
+  {
+    'cossonleo/dirdiff.nvim',
+    cmd = { 'DDiff', 'DDiffRec' },
+  },
 }

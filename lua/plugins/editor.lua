@@ -110,7 +110,7 @@ return {
     },
     opts = {},
   },
-  -- util for quicklist
+  -- util for quickfixlist
   {
     'gabrielpoca/replacer.nvim',
     keys = {
