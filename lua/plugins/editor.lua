@@ -31,6 +31,9 @@ return {
 
       fzflua.register_ui_select()
       fzflua.setup {
+        fzf_opts = {
+          ['--cycle'] = true,
+        },
         files = {
           formatter = 'path.filename_first',
         },
