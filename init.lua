@@ -5,6 +5,9 @@ vim.g.maplocalleader = '\\'
 
 vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed
 
+-- [[ Load util functions ]]
+_G.Utils = require 'utility'
+
 -- [[ Setting options ]]
 require 'config.options'
 
@@ -13,9 +16,6 @@ require 'config.keymaps'
 
 -- [[ Basic Autocommands ]]
 require 'config.autocmds'
-
--- [[ Load util functions ]]
-_G.Utils = require 'utility'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- handles plugins in lua/plugins/
