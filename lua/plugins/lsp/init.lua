@@ -124,6 +124,7 @@ return {
   },
   {
     'williamboman/mason.nvim',
+    version = '^2',
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
