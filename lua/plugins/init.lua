@@ -2,7 +2,6 @@ return {
   { 'folke/lazy.nvim', tag = 'stable' },
   {
     'folke/snacks.nvim',
-    tag = 'stable',
     opts = {
       lazygit = { enabled = true },
       zen = { enabled = true },
