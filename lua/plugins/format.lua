@@ -19,11 +19,12 @@ return {
       formatters_by_ft = {
         sh = { 'shfmt' },
         lua = { 'stylua' },
-        json = { 'prettier' },
-        javascript = { 'prettier' },
+        json = { 'prettier', 'biome' },
+        javascript = { 'prettier', 'biome' },
         html = { 'prettier' },
         http = { 'kulala' },
         rest = { 'kulala' },
+        svelte = { 'biome' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
