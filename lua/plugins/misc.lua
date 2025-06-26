@@ -72,11 +72,11 @@ return {
       },
     },
   },
-  {
-    'mistricky/codesnap.nvim',
-    build = 'make build_generator',
-    cmd = { 'CodeSnap', 'CodeSnapSave', 'CodeSnapSaveHighlight', 'CodeSnapASCII' },
-  },
+  -- {
+  --   'mistricky/codesnap.nvim',
+  --   build = 'make build_generator',
+  --   cmd = { 'CodeSnap', 'CodeSnapSave', 'CodeSnapSaveHighlight', 'CodeSnapASCII' },
+  -- },
   {
     'meznaric/key-analyzer.nvim',
     cmd = 'KeyAnalyzer',
