@@ -104,7 +104,7 @@ return {
     opts = function()
       local hour = tonumber(vim.fn.strftime '%H')
       local part_id = math.floor((hour + 4) / 8) + 1
-      local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
+      local day_part = ({ 'night', 'morning', 'afternoon', 'evening' })[part_id]
       local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
 
       local header = ('Good %s { %s }'):format(day_part, username)
