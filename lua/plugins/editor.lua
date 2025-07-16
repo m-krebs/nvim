@@ -53,7 +53,6 @@ return {
       { '<leader>sd', '<cmd>FzfLua diagnostics_document<CR>', desc = 'Search [d]iagnostics' },
       { '<leader>sc', '<cmd>FzfLua commands<CR>', desc = 'Search [c]ommands' },
       { '<leader>sw', '<cmd>FzfLua grep_cWord<CR>', desc = 'Search current [w]ord' },
-      { '<leader>sp', '<cmd>FzfLua zoxide<CR>', desc = 'Search [p]rojects' },
     },
   },
   -- Pretty diagnostics, references, quickfix, location lists

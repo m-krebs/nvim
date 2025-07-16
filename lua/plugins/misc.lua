@@ -9,8 +9,10 @@ return {
       { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
       { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
       { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+      { "<leader>sp", function() require("persistence").select() end, desc = "Search [p]rojects" },
     },
   },
+
   {
     'mistweaverco/kulala.nvim', -- HTTP REST-Client Interface
     version = '*',
@@ -36,6 +38,7 @@ return {
       {"<leader>rs", function () require('kulala').scratchpad() end, desc = 'Open Scratchpad'},
     },
   },
+
   {
     'MeanderingProgrammer/render-markdown.nvim',
     ft = 'markdown',
@@ -45,6 +48,7 @@ return {
     },
     opts = {},
   },
+
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
@@ -54,6 +58,7 @@ return {
       vim.fn['mkdp#util#install']()
     end,
   },
+
   {
     'mgierada/lazydocker.nvim',
     dependencies = { 'akinsho/toggleterm.nvim' },
@@ -72,16 +77,19 @@ return {
       },
     },
   },
+
   -- {
   --   'mistricky/codesnap.nvim',
   --   build = 'make build_generator',
   --   cmd = { 'CodeSnap', 'CodeSnapSave', 'CodeSnapSaveHighlight', 'CodeSnapASCII' },
   -- },
+
   {
     'meznaric/key-analyzer.nvim',
     cmd = 'KeyAnalyzer',
     opts = {},
   },
+
   {
     'backdround/global-note.nvim',
     opts = {},
@@ -96,6 +104,7 @@ return {
       },
     },
   },
+
   {
     'tris203/hawtkeys.nvim',
     cmd = {
@@ -109,40 +118,36 @@ return {
     },
     opts = {},
   },
+
   {
     'Hashino/doing.nvim',
     lazy = true,
     cmd = 'Do',
+    -- stylua: ignore
     keys = {
-      {
-        '<leader>da',
-        function()
-          require('doing').add()
-        end,
-        desc = '[D]oing: [A]dd',
-      },
-      {
-        '<leader>dn',
-        function()
-          require('doing').done()
-        end,
-        desc = '[D]oing: Do[n]e',
-      },
-      {
-        '<leader>de',
-        function()
-          require('doing').edit()
-        end,
-        desc = '[D]oing: [E]dit',
-      },
+      { '<leader>da', function() require('doing').add() end, desc = '[D]oing: [A]dd', },
+      { '<leader>dn', function() require('doing').done() end, desc = '[D]oing: Do[n]e', },
+      { '<leader>de', function() require('doing').edit() end, desc = '[D]oing: [E]dit', },
     },
   },
+
   {
     '2kabhishek/nerdy.nvim',
     cmd = 'Nerdy',
   },
+
   {
     'cossonleo/dirdiff.nvim',
     cmd = { 'DDiff', 'DDiffRec' },
   },
+
+  {
+    'mluders/comfy-line-numbers.nvim',
+    opts = {},
+  },
+
+  -- {
+  --   'shahshlok/vim-coach.nvim',
+  --   lazy = false,
+  -- },
 }
