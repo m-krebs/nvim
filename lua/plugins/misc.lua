@@ -143,7 +143,9 @@ return {
 
   {
     'mluders/comfy-line-numbers.nvim',
-    opts = {},
+    opts = {
+      hidden_filetypes = { 'dashboard' },
+    },
   },
 
   -- {
