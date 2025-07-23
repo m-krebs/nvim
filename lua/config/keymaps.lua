@@ -8,6 +8,7 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('i', '<C-BS>', '<C-W>')
 map('i', '<C-H>', '<C-W>')
 map('i', 'jk', '<Esc>')
+map('n', '<leader>yp', "<cmd>let @+ = expand('%:p')<cr><cmd>echo expand('%:p')<cr>", { desc = '[Y]ank [p]ath of file' })
 
 -- void
 map('n', 'Q', '"_', { desc = 'Start void register' })
