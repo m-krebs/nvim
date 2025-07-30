@@ -26,18 +26,26 @@ return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
-    config = function()
+    opts = {
+      previewers = {
+        builtin = {
+          extensions = {
+            ['png'] = { 'chafa' },
+            ['jpg'] = { 'chafa' },
+          },
+        },
+      },
+      fzf_opts = {
+        ['--cycle'] = true,
+      },
+      files = {
+        formatter = 'path.filename_first',
+      },
+    },
+    config = function(_, opts)
       local fzflua = require 'fzf-lua'
-
-      fzflua.register_ui_select()
-      fzflua.setup {
-        fzf_opts = {
-          ['--cycle'] = true,
-        },
-        files = {
-          formatter = 'path.filename_first',
-        },
-      }
+      fzflua.register_ui_select() -- register fzflua as vim.ui.select
+      fzflua.setup(opts)
     end,
     keys = {
       { '<leader><space>', '<cmd>FzfLua files<CR>', desc = 'Find files' },
@@ -77,7 +85,6 @@ return {
   {
     'stevearc/overseer.nvim',
     version = '*',
-    lazy = true,
     cmd = {
       'OverseerBuild',
       'OverseerClearCache',
