@@ -131,6 +131,7 @@ return {
     },
   },
 
+  -- finds nerd glyphs easily
   {
     '2kabhishek/nerdy.nvim',
     cmd = 'Nerdy',
@@ -144,7 +145,7 @@ return {
   {
     'mluders/comfy-line-numbers.nvim',
     opts = {
-      hidden_filetypes = { 'dashboard' },
+      hidden_filetypes = { 'dashboard', 'minifiles' },
     },
   },
 

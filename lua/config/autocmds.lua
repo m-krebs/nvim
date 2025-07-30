@@ -34,15 +34,14 @@ autocmd('TextYankPost', {
 })
 
 -- sync with system clipboard on focus
-vim.api.nvim_create_autocmd({ "FocusGained" }, {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd({ 'FocusGained' }, {
+  pattern = { '*' },
   command = [[call setreg("@", getreg("+"))]],
 })
 
-
 -- sync with system clipboard on focus
-vim.api.nvim_create_autocmd({ "FocusLost" }, {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd({ 'FocusLost' }, {
+  pattern = { '*' },
   command = [[call setreg("+", getreg("@"))]],
 })
 
@@ -80,3 +79,13 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 --     end
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+    local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy '+'
+    copy_to_unnamedplus(vim.v.event.regcontents)
+    local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy '*'
+    copy_to_unnamed(vim.v.event.regcontents)
+  end,
+})
