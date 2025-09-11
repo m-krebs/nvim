@@ -57,3 +57,4 @@ map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+map('n', '<leader>qr', '<cmd>cq<cr>', { desc = '[Q]uit and [r]estart' })
