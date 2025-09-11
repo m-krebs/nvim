@@ -41,6 +41,9 @@ return {
       files = {
         formatter = 'path.filename_first',
       },
+      buffers = {
+        formatter = 'path.filename_first',
+      },
     },
     config = function(_, opts)
       local fzflua = require 'fzf-lua'
@@ -57,10 +60,10 @@ return {
       { '<leader>sM', '<cmd>FzfLua manpages<CR>', desc = 'Search [M]an-pages' },
       { '<leader>sh', '<cmd>FzfLua helptags<CR>', desc = 'Search [H]elptags' },
       { '<leader>sr', '<cmd>FzfLua resume<CR>', desc = 'Search [R]esume' },
-      { '<leader>s.', '<cmd>FzfLua oldfiles<CR>', desc = 'Search oldfiles' },
       { '<leader>sd', '<cmd>FzfLua diagnostics_document<CR>', desc = 'Search [d]iagnostics' },
       { '<leader>sc', '<cmd>FzfLua commands<CR>', desc = 'Search [c]ommands' },
       { '<leader>sw', '<cmd>FzfLua grep_cWord<CR>', desc = 'Search current [w]ord' },
+      { '<leader>f.', '<cmd>FzfLua oldfiles<CR>', desc = 'Search oldfiles' },
     },
   },
   -- Pretty diagnostics, references, quickfix, location lists
