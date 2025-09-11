@@ -120,16 +120,23 @@ return {
     opts = {},
   },
   -- util for quickfixlist
+  -- {
+  --   'gabrielpoca/replacer.nvim',
+  --   keys = {
+  --     {
+  --       '<leader>h',
+  --       function()
+  --         require('replacer').run()
+  --       end,
+  --       desc = 'Replacer',
+  --     },
+  --   },
+  -- },
   {
-    'gabrielpoca/replacer.nvim',
-    keys = {
-      {
-        '<leader>h',
-        function()
-          require('replacer').run()
-        end,
-        desc = 'Replacer',
-      },
-    },
+    'stevearc/quicker.nvim',
+    event = 'FileType qf',
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
   },
 }
