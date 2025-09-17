@@ -154,4 +154,10 @@ return {
   --   'shahshlok/vim-coach.nvim',
   --   lazy = false,
   -- },
+  {
+    'rubiin/fortune.nvim',
+    opts = {
+      content_type = 'mixed',
+    },
+  },
 }
