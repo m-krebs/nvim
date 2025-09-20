@@ -53,4 +53,13 @@ return {
       },
     },
   },
+  {
+    'zbirenbaum/copilot.lua',
+    requires = {
+      'copilotlsp-nvim/copilot-lsp',
+    },
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    opts = {},
+  },
 }
