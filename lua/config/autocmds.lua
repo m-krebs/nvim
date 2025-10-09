@@ -5,6 +5,7 @@ local function augroup(name)
 end
 
 local autocmd = vim.api.nvim_create_autocmd
+local usercmd = vim.api.nvim_create_user_command
 
 -- go to last loc when opening a buffer
 autocmd('BufReadPost', {
@@ -34,13 +35,13 @@ autocmd('TextYankPost', {
 })
 
 -- sync with system clipboard on focus
-vim.api.nvim_create_autocmd({ 'FocusGained' }, {
+autocmd({ 'FocusGained' }, {
   pattern = { '*' },
   command = [[call setreg("@", getreg("+"))]],
 })
 
 -- sync with system clipboard on focus
-vim.api.nvim_create_autocmd({ 'FocusLost' }, {
+autocmd({ 'FocusLost' }, {
   pattern = { '*' },
   command = [[call setreg("+", getreg("@"))]],
 })
@@ -80,7 +81,7 @@ vim.api.nvim_create_autocmd({ 'FocusLost' }, {
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
+autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
     local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy '+'
@@ -88,4 +89,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy '*'
     copy_to_unnamed(vim.v.event.regcontents)
   end,
+})
+
+  usercmd('FormatDisable', function(args)
+  print(args.bang)
+  if args.bang then
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = 'Disable auto-format-on-save',
+  bang = true,
+})
+
+usercmd('FormatEnable', function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = 'Enable auto-format-on-save',
 })
