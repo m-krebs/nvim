@@ -143,4 +143,12 @@ return {
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    'TheLeoP/powershell.nvim',
+    ft = 'ps1',
+    ---@type powershell.user_config
+    opts = {
+      bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/PowerShellEditorServices',
+    },
+  },
 }
