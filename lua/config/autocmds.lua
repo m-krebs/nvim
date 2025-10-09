@@ -91,7 +91,7 @@ autocmd('TextYankPost', {
   end,
 })
 
-  usercmd('FormatDisable', function(args)
+usercmd('FormatDisable', function(args)
   print(args.bang)
   if args.bang then
     vim.b.disable_autoformat = true

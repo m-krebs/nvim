@@ -18,7 +18,7 @@ return {
           Utils.notify.info('Enabled auto pairs', { title = 'Option' })
         end
       end,
-      desc = 'Toggle Auto Pairs',
+      desc = 'Toggle Auto [P]airs',
     },
   },
 }

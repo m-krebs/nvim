@@ -52,9 +52,19 @@ map('n', '<leader>fn', '<cmd>enew<cr>', { desc = 'New File' })
 -- terminal
 -- map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Normal mode in terminal' })
 
+map('n', '<leader>fc', function()
+  require('fzf-lua').files { cwd = vim.fn.stdpath 'config' }
+end, { desc = '[F]ind [c]onfig files' })
+
 -- lazy
 map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 map('n', '<leader>qr', '<cmd>cq<cr>', { desc = '[Q]uit and [r]estart' })
+
+-- options
+map('n', '<leader>uw', function()
+  vim.o.wrap = not vim.o.wrap
+  Utils.notify.info((vim.o.wrap and 'En' or 'Dis') .. 'abled Linewrap', { title = 'Option' })
+end, { desc = 'Toggle Line [W]rap' })
