@@ -1,5 +1,13 @@
 local map = vim.keymap.set
 
+local function SplitPreviousBuffer(direction)
+  local alt = vim.fn.expand '#'
+  local has_prev = alt ~= ''
+  local split_cmd = direction == 'v' and 'vsplit' or 'split'
+  local cmd = has_prev and ('<cmd>' .. split_cmd .. ' | b#<cr>') or ('<cmd>' .. split_cmd .. '<cr>')
+  return cmd
+end
+
 --  See `:help vim.keymap.set()`
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -38,10 +46,18 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 map('n', '<leader>wd', '<C-w>c', { desc = 'Close current window' })
-map('n', '<leader>|', '<cmd>vsplit<cr>', { desc = 'Split window horizontally' })
-map('n', '<leader>-', '<cmd>split<cr>', { desc = 'Split window vertically' })
-map('n', '<leader>w|', '<cmd>vsplit<cr>', { desc = 'Split window horizontally' })
-map('n', '<leader>w-', '<cmd>split<cr>', { desc = 'Split window vertically' })
+map('n', '<leader>|', function()
+  return SplitPreviousBuffer ''
+end, { desc = 'Split window horizontally', expr = true })
+map('n', '<leader>-', function()
+  return SplitPreviousBuffer 'v'
+end, { desc = 'Split window vertically', expr = true })
+map('n', '<leader>w|', function()
+  return SplitPreviousBuffer ''
+end, { desc = 'Split window horizontally', expr = true })
+map('n', '<leader>w-', function()
+  return SplitPreviousBuffer 'v'
+end, { desc = 'Split window vertically', expr = true })
 
 -- buffers
 map('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
