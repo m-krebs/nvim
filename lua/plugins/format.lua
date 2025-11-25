@@ -3,6 +3,8 @@ return {
   {
     'stevearc/conform.nvim',
     version = '*',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -22,12 +24,12 @@ return {
         sh = { 'shfmt' },
         lua = { 'stylua' },
         json = { 'biome' },
-        javascript = { 'biome' },
-        typescript = { 'biome' },
+        javascript = { 'biome', 'prettier' },
+        typescript = { 'biome', 'prettier' },
         html = { 'prettier' },
         http = { 'kulala' },
         rest = { 'kulala' },
-        svelte = { 'biome', 'prettier' },
+        svelte = { 'prettier' },
         python = { 'black' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
