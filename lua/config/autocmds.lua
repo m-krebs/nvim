@@ -108,4 +108,10 @@ usercmd('FormatEnable', function()
   vim.g.disable_autoformat = false
 end, {
   desc = 'Enable auto-format-on-save',
+-- close gitsigns-blame window by simple q press
+autocmd("FileType", {
+  pattern = "gitsigns-blame",
+  callback = function()
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
+  end,
 })
