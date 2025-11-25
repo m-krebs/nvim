@@ -91,23 +91,25 @@ autocmd('TextYankPost', {
   end,
 })
 
-usercmd('FormatDisable', function(args)
-  print(args.bang)
+usercmd("FormatDisable", function(args)
   if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
     vim.b.disable_autoformat = true
   else
     vim.g.disable_autoformat = true
   end
 end, {
-  desc = 'Disable auto-format-on-save',
+  desc = "Disable auto-format-on-save",
   bang = true,
 })
 
-usercmd('FormatEnable', function()
+usercmd("FormatEnable", function()
   vim.b.disable_autoformat = false
   vim.g.disable_autoformat = false
 end, {
-  desc = 'Enable auto-format-on-save',
+  desc = "Enable auto-format-on-save",
+})
+
 -- close gitsigns-blame window by simple q press
 autocmd("FileType", {
   pattern = "gitsigns-blame",
