@@ -27,6 +27,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
     opts = {
+      fzf_bin = 'sk',
       previewers = {
         builtin = {
           extensions = {
@@ -38,6 +39,7 @@ return {
       fzf_opts = {
         ['--cycle'] = true,
       },
+      file_ignore_patterns = { 'lazy-lock.json' },
       files = {
         formatter = 'path.filename_first',
       },
@@ -53,7 +55,13 @@ return {
     keys = {
       { '<leader><space>', '<cmd>FzfLua files<CR>', desc = 'Find files' },
       { '<leader>sb', '<cmd>FzfLua blines<CR>', desc = 'FuzzyFind [b]uffer' },
-      { '<leader>/', '<cmd>FzfLua live_grep_native<CR>', desc = 'Grep project' },
+      {
+        '<leader>/',
+        function()
+          require('fzf-lua').live_grep_native { filter = "rg -v 'lazy-lock.json'" }
+        end,
+        desc = 'Grep project',
+      },
       { '<leader>,', '<cmd>FzfLua buffers<CR>', desc = 'Search buffers' },
       { '<leader>sk', '<cmd>FzfLua keymaps<CR>', desc = 'Search [k]eymaps' },
       { '<leader>sm', '<cmd>FzfLua marks<CR>', desc = 'Search [m]arks' },
