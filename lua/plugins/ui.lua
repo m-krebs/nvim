@@ -295,7 +295,6 @@ return {
   {
     'sainnhe/sonokai',
     priority = 1000,
-    event = 'VeryLazy',
     config = function()
       vim.g.sonokai_style = 'shusia'
       vim.cmd.colorscheme 'sonokai'

@@ -4,6 +4,9 @@ return {
     'folke/persistence.nvim',
     event = 'BufReadPre',
     opts = { options = vim.opt.sessionoptions:get() },
+    dependencies = {
+      'ibhagwan/fzf-lua',
+    },
     -- stylua: ignore
     keys = {
       { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
