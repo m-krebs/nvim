@@ -83,6 +83,7 @@ return {
 
   {
     'rcarriga/nvim-notify',
+    event = 'VeryLazy',
     version = '*',
     opts = { render = 'compact', style = 'static', top_down = false },
   },
@@ -115,6 +116,7 @@ return {
       'rcarriga/nvim-notify',
     },
   },
+
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
@@ -204,6 +206,7 @@ return {
       return opts
     end,
   },
+
   {
     'folke/which-key.nvim',
     version = '*',
@@ -246,6 +249,7 @@ return {
       wk.setup(opts)
     end,
   },
+
   {
     'lukas-reineke/indent-blankline.nvim',
     version = '*',
@@ -277,9 +281,11 @@ return {
   -- show marks in signcolumn
   {
     'chentoast/marks.nvim',
+    event = 'BufReadPre',
     opts = {},
   },
-  'nvim-treesitter/nvim-treesitter-context',
+
+  { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPre' },
 
   --- Colorschemes ---
   {

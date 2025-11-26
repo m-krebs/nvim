@@ -1,5 +1,5 @@
 return {
-  { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth', event = 'BufReadPre' }, -- Detect tabstop and shiftwidth automatically
   { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
   {
     'folke/flash.nvim',
@@ -25,7 +25,7 @@ return {
   {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    lazy = false,
+    cmd = 'FzfLua',
     opts = {
       fzf_bin = 'sk',
       previewers = {

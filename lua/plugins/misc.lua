@@ -145,6 +145,7 @@ return {
 
   {
     'mluders/comfy-line-numbers.nvim',
+    event = 'BufReadPre',
     opts = {
       hidden_filetypes = { 'dashboard', 'minifiles' },
     },
