@@ -95,6 +95,7 @@ return {
   },
   {
     'stevearc/overseer.nvim',
+    dependencies = { 'ibhagwan/fzf-lua' },
     version = '*',
     cmd = {
       'OverseerBuild',
