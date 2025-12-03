@@ -91,6 +91,7 @@ return {
         -- See `:help lspconfig-all` for a list of pre-configured LSPs
         stylua = {},
         lua_ls = {},
+        svelte = {},
       }
 
       require('mason').setup()

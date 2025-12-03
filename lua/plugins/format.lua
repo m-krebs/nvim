@@ -29,7 +29,7 @@ return {
         html = { 'prettier' },
         http = { 'kulala' },
         rest = { 'kulala' },
-        svelte = { 'prettier' },
+        svelte = { 'biome' },
         python = { 'black' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
