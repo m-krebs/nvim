@@ -26,25 +26,25 @@ autocmd('BufReadPost', {
 })
 
 -- highlight text when yanking | `:help vim.highlight.on_yank()`
-autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = augroup 'highlight-yank',
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+-- autocmd('TextYankPost', {
+--   desc = 'Highlight when yanking (copying) text',
+--   group = augroup 'highlight-yank',
+--   callback = function()
+--     vim.highlight.on_yank()
+--   end,
+-- })
 
 -- sync with system clipboard on focus
-autocmd({ 'FocusGained' }, {
-  pattern = { '*' },
-  command = [[call setreg("@", getreg("+"))]],
-})
+-- autocmd({ 'FocusGained' }, {
+--   pattern = { '*' },
+--   command = [[call setreg("@", getreg("+"))]],
+-- })
 
 -- sync with system clipboard on focus
-autocmd({ 'FocusLost' }, {
-  pattern = { '*' },
-  command = [[call setreg("+", getreg("@"))]],
-})
+-- autocmd({ 'FocusLost' }, {
+--   pattern = { '*' },
+--   command = [[call setreg("+", getreg("@"))]],
+-- })
 
 -- autocmd('User', {
 --   pattern = 'LazyUpdate',
@@ -91,7 +91,7 @@ autocmd('TextYankPost', {
   end,
 })
 
-usercmd("FormatDisable", function(args)
+usercmd('FormatDisable', function(args)
   if args.bang then
     -- FormatDisable! will disable formatting just for this buffer
     vim.b.disable_autoformat = true
@@ -99,21 +99,21 @@ usercmd("FormatDisable", function(args)
     vim.g.disable_autoformat = true
   end
 end, {
-  desc = "Disable auto-format-on-save",
+  desc = 'Disable auto-format-on-save',
   bang = true,
 })
 
-usercmd("FormatEnable", function()
+usercmd('FormatEnable', function()
   vim.b.disable_autoformat = false
   vim.g.disable_autoformat = false
 end, {
-  desc = "Enable auto-format-on-save",
+  desc = 'Enable auto-format-on-save',
 })
 
 -- close gitsigns-blame window by simple q press
-autocmd("FileType", {
-  pattern = "gitsigns-blame",
+autocmd('FileType', {
+  pattern = 'gitsigns-blame',
   callback = function()
-    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
+    vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = true, silent = true })
   end,
 })

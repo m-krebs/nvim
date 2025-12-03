@@ -5,7 +5,7 @@ local g = vim.g
 if Utils.wsl.is_wsl() == true then
   opt.clipboard = '' -- disable sync on wsl
 else
-  opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+  -- opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 end
 
 opt.confirm = true -- Confirm to save before exiting modified buffer
@@ -52,14 +52,14 @@ local function no_paste()
   }
 end
 
-g.clipboard = {
-  name = 'OSC 52',
-  copy = { ['+'] = require('vim.ui.clipboard.osc52').copy '+', ['*'] = require('vim.ui.clipboard.osc52').copy '*' },
-  paste = {
-    ['+'] = no_paste,
-    ['*'] = no_paste,
-  },
-}
+-- g.clipboard = {
+--   name = 'OSC 52',
+--   copy = { ['+'] = require('vim.ui.clipboard.osc52').copy '+', ['*'] = require('vim.ui.clipboard.osc52').copy '*' },
+--   paste = {
+--     ['+'] = no_paste,
+--     ['*'] = no_paste,
+--   },
+-- }
 
 -- Disables permanent showing of diagnostics
 --
