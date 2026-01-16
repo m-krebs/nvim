@@ -47,17 +47,17 @@ map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 map('n', '<leader>wd', '<C-w>c', { desc = 'Close current window' })
 map('n', '<leader>|', function()
-  return SplitPreviousBuffer ''
-end, { desc = 'Split window horizontally', expr = true })
+  return SplitPreviousBuffer 'v'
+end, { desc = 'Split window vertically', expr = true })
 map('n', '<leader>-', function()
-  return SplitPreviousBuffer 'v'
-end, { desc = 'Split window vertically', expr = true })
-map('n', '<leader>w|', function()
   return SplitPreviousBuffer ''
 end, { desc = 'Split window horizontally', expr = true })
-map('n', '<leader>w-', function()
+map('n', '<leader>w|', function()
   return SplitPreviousBuffer 'v'
 end, { desc = 'Split window vertically', expr = true })
+map('n', '<leader>w-', function()
+  return SplitPreviousBuffer ''
+end, { desc = 'Split window horizontally', expr = true })
 
 -- buffers
 map('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
