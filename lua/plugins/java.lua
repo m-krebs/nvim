@@ -43,7 +43,7 @@ return {
         path.bundles = {}
 
         ---
-        -- Include java-debug-adapter bundle if presesnt
+        -- Include java-debug-adapter bundle if present
         ---
 
         local java_debug_path = vim.fn.expand(mason_path .. '/packages/java-debug-adapter')
@@ -59,20 +59,12 @@ return {
           -- name has to be valid `ExecutionEnvironment`:
           -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
           {
-            name = 'JavaSE-1.8',
-            path = vim.fn.expand '~/.sdkman/candidates/java/8.0.402-albba',
-          },
-          {
-            name = 'JavaSE-11',
-            path = vim.fn.expand '~/.sdkman/candidates/java/11.0.22-albba',
-          },
-          {
             name = 'JavaSE-17',
-            path = vim.fn.expand '~/.sdkman/candidates/java/17.0.9-zulu',
+            path = vim.fn.expand '~/.local/share/mise/installs/java/17',
           },
           {
-            name = 'JavaSE-22',
-            path = vim.fn.expand '~/.sdkman/candidates/java/22-zulu',
+            name = 'JavaSE-21',
+            path = vim.fn.expand '~/.local/share/mise/installs/java/21',
           },
         }
 
@@ -143,7 +135,7 @@ return {
             maven = {
               downloadSources = true,
             },
-            ['format.settings.url'] = '/home/mkrebs/.local/share/eclipse/intellij-java-google-style.xml',
+            ['format.settings.url'] = '$HOME/.local/share/eclipse/intellij-java-google-style.xml',
           },
           signatureHelp = {
             enabled = true,
