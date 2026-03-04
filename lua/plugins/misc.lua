@@ -164,4 +164,13 @@ return {
       content_type = 'mixed',
     },
   },
+  {
+    'AlejandroSuero/freeze-code.nvim',
+    opts = {
+      dir = vim.fn.expand '~' .. '/Pictures/screenshots', -- Auto generate file name based on time (absolute or relative to cwd)
+      freeze_config = {
+        output = 'code_screen',
+      },
+    },
+  },
 }

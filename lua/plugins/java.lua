@@ -66,6 +66,10 @@ return {
             name = 'JavaSE-21',
             path = vim.fn.expand '~/.local/share/mise/installs/java/21',
           },
+          {
+            name = 'JavaSE-25',
+            path = vim.fn.expand '~/.local/share/mise/installs/java/25',
+          },
         }
 
         cache_vars.paths = path
