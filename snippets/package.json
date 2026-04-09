@@ -5,6 +5,10 @@
       {
         "language": "all",
         "path": "./global.json"
+      },
+      {
+        "language": "http",
+        "path": "./http.json"
       }
     ]
   }

@@ -1,0 +1,8 @@
+{
+  "localhost": {
+    "prefix": "lh",
+    "body": [
+      "localhost:"
+    ]
+  },
+}
