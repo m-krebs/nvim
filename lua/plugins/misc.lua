@@ -15,9 +15,9 @@ return {
       { "<leader>sp", function() require("persistence").select() end, desc = "Search [p]rojects" },
     },
   },
-
+  -- HTTP REST-Client Interface
   {
-    'mistweaverco/kulala.nvim', -- HTTP REST-Client Interface
+    'mistweaverco/kulala.nvim',
     version = '*',
     ft = 'http',
     opts = {},
@@ -139,11 +139,6 @@ return {
     '2kabhishek/nerdy.nvim',
     cmd = 'Nerdy',
     opts = {},
-  },
-
-  {
-    'cossonleo/dirdiff.nvim',
-    cmd = { 'DDiff', 'DDiffRec' },
   },
 
   {
