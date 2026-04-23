@@ -287,25 +287,6 @@ return {
 
   { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPre' },
 
-  --- Colorschemes ---
-  {
-    'Shatur/neovim-ayu',
-    event = 'VeryLazy', -- priority = 1000, config = function() vim.cmd.colorscheme 'ayu' vim.api.nvim_set_hl(0, 'LineNr', { fg = '#34383f' }) end,
-  },
-  {
-    'sainnhe/sonokai',
-  },
-  {
-    'scottmckendry/cyberdream.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'cyberdream'
-    end,
-  },
-  { 'folke/tokyonight.nvim', event = 'VeryLazy' },
-  { 'eldritch-theme/eldritch.nvim', event = 'VeryLazy' },
-  { 'rebelot/kanagawa.nvim', event = 'VeryLazy' },
-
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
