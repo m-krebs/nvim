@@ -27,6 +27,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     cmd = 'FzfLua',
     opts = {
+      -- use skim binary to power fzf
       fzf_bin = 'sk',
       previewers = {
         builtin = {
@@ -146,9 +147,9 @@ return {
   -- },
   {
     'stevearc/quicker.nvim',
-    event = 'FileType qf',
+    ft = 'qf',
     ---@module "quicker"
-    ---@type quicker.SetupOptions
+    ---@type quicker.setupoptions
     opts = {},
   },
 }

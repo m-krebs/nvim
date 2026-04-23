@@ -2,12 +2,12 @@ return {
   { 'folke/lazy.nvim', tag = 'stable' },
   {
     'folke/snacks.nvim',
+    lazy = false,
     opts = {
       lazygit = { enabled = true },
       zen = { enabled = true },
       scroll = { enabled = true },
     },
-    lazy = false,
     keys = {
       {
         '<leader>z',

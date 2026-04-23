@@ -1,4 +1,9 @@
+local rust = require 'plugins.lsp.rust'
+local powershell = require 'plugins.lsp.powershell'
+
 return {
+  { rust },
+  { powershell },
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -15,10 +20,10 @@ return {
           },
         },
       },
-      'williamboman/mason.nvim', -- lsp package manager
+      -- lsp package manager
+      { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim', version = '*' },
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', version = '*', opts = {} },
     },
@@ -137,19 +142,6 @@ return {
           package_pending = '',
         },
       },
-    },
-  },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
-  {
-    'TheLeoP/powershell.nvim',
-    ft = 'ps1',
-    ---@type powershell.user_config
-    opts = {
-      bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/PowerShellEditorServices',
     },
   },
 }
