@@ -21,7 +21,7 @@ return {
     event = 'BufRead',
     opts = {
       current_line_blame_opts = {
-        delay = 300
+        delay = 300,
       },
       current_line_blame = true,
       signs = {
@@ -34,7 +34,11 @@ return {
       },
     },
     keys = {
-      { "<leader>gbb", "<cmd>Gitsigns blame<cr>", desc = "[G]itsigns [b]lame [b]uffer"}
-    }
+      { '<leader>gbb', '<cmd>Gitsigns blame<cr>', desc = '[G]itsigns [b]lame [b]uffer' },
+    },
+  },
+  {
+    'dlyongemallo/diffview.nvim',
+    version = '*',
   },
 }
