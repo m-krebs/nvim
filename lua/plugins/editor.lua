@@ -152,4 +152,8 @@ return {
     ---@type quicker.setupoptions
     opts = {},
   },
+  {
+    'error311/wayfinder.nvim',
+    opts = {},
+  },
 }
