@@ -83,7 +83,6 @@ return {
 
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Enable the following language servers
       --  Add any additional override configuration in the following tables. Available keys are:
@@ -97,6 +96,7 @@ return {
         stylua = {},
         lua_ls = {},
         svelte = {},
+        kotlin_lsp = {},
       }
 
       require('mason').setup()
@@ -129,7 +129,7 @@ return {
     end,
   },
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     version = '^2',
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
@@ -137,9 +137,9 @@ return {
     opts = {
       ui = {
         icons = {
+          package_pending = '',
           package_installed = '',
           package_uninstalled = '',
-          package_pending = '',
         },
       },
     },
