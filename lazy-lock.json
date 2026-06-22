@@ -10,6 +10,7 @@
   "diffview.nvim": { "branch": "main", "commit": "385f26fd6a50e3b0b11cc9623f1f96cde00ef08c" },
   "doing.nvim": { "branch": "main", "commit": "83a0b110d9b6655172695238e066e2e513e78aaf" },
   "eldritch.nvim": { "branch": "master", "commit": "0415fa72c348e814a7a6cc9405593a4f812fe12f" },
+  "faster.nvim": { "branch": "main", "commit": "6b7cb8b1a9628d4b87009c4849d510d1a3a14319" },
   "fidget.nvim": { "branch": "main", "commit": "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e" },
   "flash.nvim": { "branch": "main", "commit": "ec0bf2842189f65f60fd40bf3557cac1029cc932" },
   "fortune.nvim": { "branch": "master", "commit": "1f559ff20b295b083c73c96bf935cad12c72ddca" },

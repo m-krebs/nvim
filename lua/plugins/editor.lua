@@ -156,4 +156,9 @@ return {
     'error311/wayfinder.nvim',
     opts = {},
   },
+  -- tools to speed up big files
+  {
+    'pteroctopus/faster.nvim',
+    opts = {},
+  },
 }
