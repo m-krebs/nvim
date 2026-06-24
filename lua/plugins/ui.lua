@@ -334,5 +334,12 @@ return {
   {
     'folke/twilight.nvim',
     opts = {},
+    keys = {
+      {
+        '<leader>ut',
+        '<cmd>Twilight<cr>',
+        desc = 'Toggle [T]wilight',
+      },
+    },
   },
 }
