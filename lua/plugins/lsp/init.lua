@@ -21,7 +21,7 @@ return {
         },
       },
       -- lsp package manager
-      { 'williamboman/mason.nvim' },
+      { 'mason-org/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim', version = '*' },
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
       -- Useful status updates for LSP.
