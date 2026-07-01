@@ -1,9 +1,7 @@
-local rust = require 'plugins.lsp.rust'
-local powershell = require 'plugins.lsp.powershell'
-
 return {
-  { rust },
-  { powershell },
+  require 'plugins.lsp.rust',
+  require 'plugins.lsp.powershell',
+
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
