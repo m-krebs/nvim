@@ -1,3 +1,16 @@
+local map = vim.keymap.set
+
+-- status updates for LSP
+vim.pack.add { gh 'j-hui/fidget.nvim' }
+require('fidget').setup {}
+
+vim.pack.add {
+  gh 'mason-org/mason.nvim',
+}
+
+require('mason').setup {}
+map('n', '<leader>cm', '<cmd>Mason<cr>', { desc = 'Mason' })
+
 return {
   require 'plugins.lsp.rust',
   require 'plugins.lsp.powershell',

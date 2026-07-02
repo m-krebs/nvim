@@ -73,7 +73,9 @@ map('n', '<leader>fc', function()
 end, { desc = '[F]ind [c]onfig files' })
 
 -- lazy
-map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+map('n', '<leader>l', function()
+  vim.pack.update(nil, { offline = true })
+end, { desc = 'Lazy' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })

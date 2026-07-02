@@ -1,15 +1,19 @@
 vim.pack.add { gh 'echasnovski/mini.nvim' }
 vim.pack.add { gh 'echasnovski/mini.files' }
-vim.keymap.set(
-{
-'n',
-        '<leader>fm',
-        function()
-          require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
-        end,
-        desc = 'mini.files (relative)',
-      }
-    )
+local minifiles = require 'mini.files'
+vim.keymap.set( 'n', '<leader>fm', function() minifiles.open(vim.api.nvim_buf_get_name(0), true) end, { desc = 'mini.files (relative)' } )
+vim.keymap.set( 'n', '<leader>fM', function() minifiles.open(vim.loop.cwd(), true) end, { desc = 'mini.files (relative)' } )
+
+-- vim.keymap.set(
+-- {
+--   'n',
+--         '<leader>fm',
+--         function()
+--           require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+--         end,
+--         desc = 'mini.files (relative)',
+--       }
+--     )
 
 
 return {
