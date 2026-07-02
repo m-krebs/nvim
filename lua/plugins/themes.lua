@@ -2,7 +2,15 @@ return {
   {
     'scottmckendry/cyberdream.nvim',
     priority = 1000,
+    opts = {
+      transparent = true,
+      italic_comments = true,
+    },
     config = function()
+      require('cyberdream').setup {
+        italic_comments = true,
+        borderless_pickers = true,
+      }
       vim.cmd.colorscheme 'cyberdream'
     end,
   },

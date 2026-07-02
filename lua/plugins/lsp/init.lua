@@ -130,7 +130,7 @@ return {
     'mason-org/mason.nvim',
     version = '^2',
     cmd = 'Mason',
-    keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
+    keys = { { '<leader>cm', '<cmd>[M]ason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
     opts = {
       ui = {

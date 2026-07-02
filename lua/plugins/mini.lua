@@ -1,3 +1,17 @@
+vim.pack.add { gh 'echasnovski/mini.nvim' }
+vim.pack.add { gh 'echasnovski/mini.files' }
+vim.keymap.set(
+{
+'n',
+        '<leader>fm',
+        function()
+          require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+        end,
+        desc = 'mini.files (relative)',
+      }
+    )
+
+
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',

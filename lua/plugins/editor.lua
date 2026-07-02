@@ -1,3 +1,4 @@
+
 return {
   { 'tpope/vim-sleuth', event = 'BufReadPre' }, -- Detect tabstop and shiftwidth automatically
   { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },

@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "cyberdream.nvim": {
+      "rev": "b9cc88378b776f33d3ea77164716f37c3f13ef72",
+      "src": "https://github.com/scottmckendry/cyberdream.nvim"
+    },
+    "dashboard-nvim": {
+      "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
+      "src": "https://github.com/nvimdev/dashboard-nvim"
+    },
+    "fzf-lua": {
+      "rev": "39da6060d53659acf3ec118200bc48721b29b8fd",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "mini.files": {
+      "rev": "4b3db6f1bf76fc67582e8fe7b2fd04b971707b3f",
+      "src": "https://github.com/echasnovski/mini.files"
+    },
+    "mini.nvim": {
+      "rev": "dc8a9918c3b1bc18a5fcd04d39b6d658074c0886",
+      "src": "https://github.com/echasnovski/mini.nvim"
+    }
+  }
+}

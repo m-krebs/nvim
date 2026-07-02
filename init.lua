@@ -1,7 +1,9 @@
+vim.loader.enable()
+
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
+vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed
 
@@ -19,7 +21,8 @@ require 'config.autocmds'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- handles plugins in lua/plugins/
-require 'config.lazy_setup'
+-- require 'config.lazy_setup'
+require 'config.setup'
 
 -- workaround for rust-analyzer server cancelled request
 for _, method in ipairs { 'textDocument/diagnostic', 'workspace/diagnostic' } do

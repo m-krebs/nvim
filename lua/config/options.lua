@@ -1,11 +1,23 @@
 -- See `:help vim.opt or option-list`
 local opt = vim.opt
-local g = vim.g
+local global = vim.g
 
+-- g.clipboard = {
+--   name = 'OSC 52',
+--   copy = { ['+'] = require('vim.ui.clipboard.osc52').copy '+', ['*'] = require('vim.ui.clipboard.osc52').copy '*' },
+--   paste = {
+--     ['+'] = no_paste,
+--     ['*'] = no_paste,
+--   },
+-- }
 if Utils.wsl.is_wsl() == true then
-  opt.clipboard = '' -- disable sync on wsl
+  -- disable sync on wsl
+  opt.clipboard = ''
 else
-  -- opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+  -- Sync with system clipboard
+  vim.schedule(function()
+    opt.clipboard = 'unnamedplus'
+  end)
 end
 
 opt.confirm = true -- Confirm to save before exiting modified buffer
@@ -43,26 +55,16 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
 -- disables copilot autocomplete on tab
-g.copilot_no_tab_map = true
+global.copilot_no_tab_map = true
 
-local function no_paste()
-  return {
-    vim.fn.split(vim.fn.getreg '', '\n'),
-    vim.fn.getregtype '',
-  }
-end
-
--- g.clipboard = {
---   name = 'OSC 52',
---   copy = { ['+'] = require('vim.ui.clipboard.osc52').copy '+', ['*'] = require('vim.ui.clipboard.osc52').copy '*' },
---   paste = {
---     ['+'] = no_paste,
---     ['*'] = no_paste,
---   },
--- }
+-- local function no_paste()
+--   return {
+--     vim.fn.split(vim.fn.getreg '', '\n'),
+--     vim.fn.getregtype '',
+--   }
+-- end
 
 -- Disables permanent showing of diagnostics
---
 -- required for tiny-inline-diagnostic.nvim
 vim.diagnostic.config {
   virtual_text = false,

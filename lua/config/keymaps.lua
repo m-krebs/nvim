@@ -8,7 +8,7 @@ local function SplitPreviousBuffer(direction)
   return cmd
 end
 
---  See `:help vim.keymap.set()`
+-- clear search highlights on esc in <normal>
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Editor

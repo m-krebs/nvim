@@ -2,6 +2,7 @@
 ---@field notify utility.notify
 ---@field terminal utility.terminal
 ---@field telescope utility.telescope
+---@field wsl utility.wsl
 local M = {}
 
 setmetatable(M, {
