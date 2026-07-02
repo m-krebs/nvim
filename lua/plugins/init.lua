@@ -5,6 +5,7 @@ require 'plugins.format'
 require 'plugins.lsp'
 require 'plugins.git'
 require 'plugins.snacks'
+require 'plugins.toggleterm'
 
 -- return {
 --   {
