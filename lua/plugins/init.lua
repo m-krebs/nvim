@@ -6,3 +6,5 @@ require 'plugins.lsp'
 require 'plugins.git'
 require 'plugins.snacks'
 require 'plugins.toggleterm'
+
+require 'plugins.lint'
