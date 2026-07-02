@@ -8,12 +8,12 @@ require('gitsigns').setup {
   },
   current_line_blame = true,
   signs = {
-    add = { show_count = true, text = '▎' },
-    change = { show_count = true, text = '▎' },
-    delete = { show_count = true, text = '' },
-    topdelete = { show_count = true, text = '' },
-    changedelete = { show_count = true, text = '▎' },
-    untracked = { show_count = true, text = '▎' },
+    add = { show_count = false, text = '▎' },
+    change = { show_count = false, text = '▎' },
+    delete = { show_count = false, text = '' },
+    topdelete = { show_count = false, text = '' },
+    changedelete = { show_count = false, text = '▎' },
+    untracked = { show_count = false, text = '▎' },
   },
 }
 
