@@ -24,10 +24,6 @@ require 'core.autocmds'
 
 require 'plugins'
 
--- [[ Install `lazy.nvim` plugin manager ]]
--- handles plugins in lua/plugins/
--- require 'config.lazy_setup'
-
 -- workaround for rust-analyzer server cancelled request
 for _, method in ipairs { 'textDocument/diagnostic', 'workspace/diagnostic' } do
   local default_diagnostic_handler = vim.lsp.handlers[method]
