@@ -1,3 +1,5 @@
+vim.pack.add { gh 'nvim-treesitter/nvim-treesitter-context' }
+
 return {
   {
     -- Highlight, edit, and navigate code

@@ -1,20 +1,18 @@
+vim.pack.add {
+  'folke/persistence.nvim',
+}
+
+local persistence = require 'persistence'
+persistence.setup { options = vim.opt.sessionoptions:get() }
+
+-- stylua: ignore start
+vim.keymap.set('<leader>qs', function() persistence.load() end, { desc = 'Restore Session' })
+vim.keymap.set('<leader>ql', function() persistence.load { last = true } end, { desc = 'Restore Last Session' })
+vim.keymap.set('<leader>qd', function() persistence.stop() end, { desc = "Don't Save Current Session" })
+vim.keymap.set('<leader>sp', function() persistence.select() end, { desc = 'Search [p]rojects' })
+-- stylua: ignore end
+
 return {
-  -- Session management
-  {
-    'folke/persistence.nvim',
-    event = 'BufReadPre',
-    opts = { options = vim.opt.sessionoptions:get() },
-    dependencies = {
-      'ibhagwan/fzf-lua',
-    },
-    -- stylua: ignore
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
-      { "<leader>sp", function() require("persistence").select() end, desc = "Search [p]rojects" },
-    },
-  },
   -- HTTP REST-Client Interface
   {
     'mistweaverco/kulala.nvim',

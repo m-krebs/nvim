@@ -1,4 +1,7 @@
+require 'plugins.utils'
 require 'plugins.dashboard'
+require 'plugins.ui'
+require 'plugins.editor'
 require 'plugins.navigation'
 require 'plugins.mini'
 require 'plugins.format'
@@ -6,5 +9,6 @@ require 'plugins.lsp'
 require 'plugins.git'
 require 'plugins.snacks'
 require 'plugins.toggleterm'
-
 require 'plugins.lint'
+
+require 'plugins.overseer'

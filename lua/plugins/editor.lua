@@ -1,7 +1,12 @@
+vim.pack.add {
+  gh 'tpope/vim-sleuth',
+  gh 'numToStr/Comment.nvim',
+  gh 'stevearc/quicker.nvim',
+  gh 'error311/wayfinder.nvim',
+  gh 'pteroctopus/faster.nvim',
+}
 
 return {
-  { 'tpope/vim-sleuth', event = 'BufReadPre' }, -- Detect tabstop and shiftwidth automatically
-  { 'numToStr/Comment.nvim', opts = {}, event = 'BufRead' },
   {
     'folke/flash.nvim',
     version = '*',
@@ -23,59 +28,6 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  {
-    'ibhagwan/fzf-lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    cmd = 'FzfLua',
-    opts = {
-      -- use skim binary to power fzf
-      fzf_bin = 'sk',
-      previewers = {
-        builtin = {
-          extensions = {
-            ['png'] = { 'chafa' },
-            ['jpg'] = { 'chafa' },
-          },
-        },
-      },
-      fzf_opts = {
-        ['--cycle'] = true,
-      },
-      file_ignore_patterns = { 'lazy-lock.json' },
-      files = {
-        formatter = 'path.filename_first',
-      },
-      buffers = {
-        formatter = 'path.filename_first',
-      },
-    },
-    config = function(_, opts)
-      local fzflua = require 'fzf-lua'
-      fzflua.register_ui_select() -- register fzflua as vim.ui.select
-      fzflua.setup(opts)
-    end,
-    keys = {
-      { '<leader><space>', '<cmd>FzfLua files<CR>', desc = 'Find files' },
-      { '<leader>sb', '<cmd>FzfLua blines<CR>', desc = 'FuzzyFind [b]uffer' },
-      {
-        '<leader>/',
-        function()
-          require('fzf-lua').live_grep_native { filter = "rg -v 'lazy-lock.json'" }
-        end,
-        desc = 'Grep project',
-      },
-      { '<leader>,', '<cmd>FzfLua buffers<CR>', desc = 'Search buffers' },
-      { '<leader>sk', '<cmd>FzfLua keymaps<CR>', desc = 'Search [k]eymaps' },
-      { '<leader>sm', '<cmd>FzfLua marks<CR>', desc = 'Search [m]arks' },
-      { '<leader>sM', '<cmd>FzfLua manpages<CR>', desc = 'Search [M]an-pages' },
-      { '<leader>sh', '<cmd>FzfLua helptags<CR>', desc = 'Search [H]elptags' },
-      { '<leader>sr', '<cmd>FzfLua resume<CR>', desc = 'Search [R]esume' },
-      { '<leader>sd', '<cmd>FzfLua diagnostics_document<CR>', desc = 'Search [d]iagnostics' },
-      { '<leader>sc', '<cmd>FzfLua commands<CR>', desc = 'Search [c]ommands' },
-      { '<leader>sw', '<cmd>FzfLua grep_cWord<CR>', desc = 'Search current [w]ord' },
-      { '<leader>f.', '<cmd>FzfLua oldfiles<CR>', desc = 'Search oldfiles' },
-    },
-  },
   -- Pretty diagnostics, references, quickfix, location lists
   {
     'folke/trouble.nvim',
@@ -93,73 +45,6 @@ return {
         desc = '[S]ymbols',
       },
     },
-    opts = {},
-  },
-  {
-    'stevearc/overseer.nvim',
-    dependencies = { 'ibhagwan/fzf-lua' },
-    version = '*',
-    cmd = {
-      'OverseerBuild',
-      'OverseerClearCache',
-      'OverseerClose',
-      'OverseerDeleteBundle',
-      'OverseerLoadBundle',
-      'OverseerInfo',
-      'OverseerOpen',
-      'OverseerQuickAction',
-      'OverseerRun',
-      'OverseerRunCmd',
-      'OverseerSaveBundle',
-      'OverseerTaskAction',
-      'OverseerToggle',
-    },
-    keys = {
-      {
-        '<leader>o',
-        '<cmd>OverseerRun<cr>',
-        desc = 'Overseer Run',
-      },
-      {
-        '<leader>ot',
-        '<cmd>OverseerToggle<cr>',
-        desc = 'Overseer [T]oggle',
-      },
-      {
-        '<leader>oq',
-        '<cmd>OverseerQuickAction<cr>',
-        desc = 'Overseer [Q]uickAction',
-      },
-    },
-    opts = {},
-  },
-  -- util for quickfixlist
-  -- {
-  --   'gabrielpoca/replacer.nvim',
-  --   keys = {
-  --     {
-  --       '<leader>h',
-  --       function()
-  --         require('replacer').run()
-  --       end,
-  --       desc = 'Replacer',
-  --     },
-  --   },
-  -- },
-  {
-    'stevearc/quicker.nvim',
-    ft = 'qf',
-    ---@module "quicker"
-    ---@type quicker.setupoptions
-    opts = {},
-  },
-  {
-    'error311/wayfinder.nvim',
-    opts = {},
-  },
-  -- tools to speed up big files
-  {
-    'pteroctopus/faster.nvim',
     opts = {},
   },
 }

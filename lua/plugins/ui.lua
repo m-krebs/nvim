@@ -1,345 +1,173 @@
-return {
-  {
-    'akinsho/bufferline.nvim',
-    version = '*',
-    event = 'VeryLazy',
-    dependencies = {
-      { 'tiagovla/scope.nvim', opts = true },
+vim.pack.add {
+  gh 'akinsho/bufferline.nvim',
+  gh 'nvim-lualine/lualine.nvim',
+  gh 'rcarriga/nvim-notify',
+  gh 'folke/twilight.nvim',
+  gh 'folke/which-key.nvim',
+  gh 'folke/noice.nvim',
+  gh 'lukas-reineke/indent-blankline.nvim',
+  gh 'chentoast/marks.nvim',
+  gh 'folke/todo-comments.nvim',
+  gh 'rachartier/tiny-inline-diagnostic.nvim',
+  gh 'rachartier/tiny-glimmer.nvim',
+}
+
+require('todo-comments').setup { signs = false }
+
+vim.keymap.set('n', '<leader>st', '<cmd>TodoFzfLua<cr>', { desc = '[S]earch [T]odo' })
+
+require('tiny-glimmer').setup {
+  overwrite = {
+    undo = {
+      enabled = true,
     },
-    keys = {
-      { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle [p]in' },
-      { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete non-[p]inned buffers' },
-      { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Delete [o]ther buffers' },
-      { '<leader>br', '<Cmd>BufferLineCloseRight<CR>', desc = 'Delete buffers to the [r]ight' },
-      { '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', desc = 'Delete buffers to the [l]eft' },
-      { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
-      { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
-      { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
-      { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
+  },
+}
+
+require('lualine').setup {
+  options = {
+    globalstatus = true,
+  },
+  sections = {
+    lualine_b = {
+      {
+        -- shows macro recording in statusline
+        'macro',
+        fmt = function()
+          local reg = vim.fn.reg_recording()
+          if reg ~= '' then
+            return 'Recording @' .. reg
+          end
+          return nil
+        end,
+        color = { fg = '#ff9e64' },
+        draw_empty = false,
+      },
     },
-    opts = {
-      options = {
+  },
+}
+
+do
+  require('bufferline').setup {
+    options = {
         -- stylua: ignore
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
         -- stylua: ignore
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
-        diagnostics = 'nvim_lsp',
-        always_show_bufferline = true,
-        -- diagnostics_indicator = function(_, _, diag)
-        --   local icons = require('lazyvim.config').icons.diagnostics
-        --   local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
-        --   return vim.trim(ret)
-        -- end,
-        offsets = {
-          {
-            filetype = 'neo-tree',
-            text = 'Neo-tree',
-            highlight = 'Directory',
-            text_align = 'left',
-          },
+      diagnostics = 'nvim_lsp',
+      always_show_bufferline = true,
+      -- diagnostics_indicator = function(_, _, diag)
+      --   local icons = require('lazyvim.config').icons.diagnostics
+      --   local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+      --   return vim.trim(ret)
+      -- end,
+      offsets = {
+        {
+          filetype = 'neo-tree',
+          text = 'Neo-tree',
+          highlight = 'Directory',
+          text_align = 'left',
         },
       },
     },
-    config = function(_, opts)
-      require('bufferline').setup(opts)
-      -- Fix bufferline when restoring a session
-      vim.api.nvim_create_autocmd('BufAdd', {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
-      })
+  }
+
+  vim.api.nvim_create_autocmd('BufAdd', {
+    callback = function()
+      vim.schedule(function()
+        pcall(nvim_bufferline)
+      end)
     end,
-  },
+  })
 
-  -- statusline
-  {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    opts = function()
-      return {
-        options = {
-          globalstatus = true,
-        },
-        sections = {
-          lualine_b = {
-            {
-              -- shows macro recording in statusline
-              'macro',
-              fmt = function()
-                local reg = vim.fn.reg_recording()
-                if reg ~= '' then
-                  return 'Recording @' .. reg
-                end
-                return nil
-              end,
-              color = { fg = '#ff9e64' },
-              draw_empty = false,
-            },
-          },
-        },
-      }
-    end,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
+  vim.keymap.set('n', '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', { desc = 'Toggle [p]in' })
+  vim.keymap.set('n', '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', { desc = 'Delete non-[p]inned buffers' })
+  vim.keymap.set('n', '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', { desc = 'Delete [o]ther buffers' })
+  vim.keymap.set('n', '<leader>br', '<Cmd>BufferLineCloseRight<CR>', { desc = 'Delete buffers to the [r]ight' })
+  vim.keymap.set('n', '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', { desc = 'Delete buffers to the [l]eft' })
+  vim.keymap.set('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev buffer' })
+  vim.keymap.set('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer' })
+  vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev buffer' })
+  vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer' })
+end
 
-  {
-    'rcarriga/nvim-notify',
-    event = 'VeryLazy',
-    version = '*',
-    opts = { render = 'compact', style = 'static', top_down = false },
-  },
+require('notify').setup { render = 'compact', style = 'static', top_down = false }
 
-  -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
-  {
-    'folke/noice.nvim',
-    version = '*',
-    event = 'VeryLazy',
-    opts = {
-      cmdline = {
-        view = 'cmdline',
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        inc_rename = true,
-        lsp_doc_border = true,
-      },
-      lsp = {
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-        },
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
+vim.keymap.set('n', '<leader>ut', '<cmd>Twilight<cr>', { desc = 'Toggle [T]wilight' })
+
+require('ibl').setup {
+  indent = {
+    char = '│',
+    tab_char = '│',
+  },
+  scope = { enabled = false },
+  exclude = {
+    filetypes = {
+      'help',
+      'alpha',
+      'dashboard',
+      'neo-tree',
+      'Trouble',
+      'trouble',
+      'lazy',
+      'mason',
+      'notify',
+      'toggleterm',
+      'lazyterm',
     },
   },
+}
+-- main = 'ibl',
 
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    opts = function()
-      local hour = tonumber(vim.fn.strftime '%H')
-      local part_id = math.floor((hour + 4) / 8) + 1
-      local day_part = ({ 'night', 'morning', 'afternoon', 'evening' })[part_id]
-      local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
-
-      local header = ('Good %s { %s }'):format(day_part, username)
-
-      header = string.rep('\n', 8) .. "I'm using neovim (BTW)" .. '\n\n\n' .. header .. '\n\n\n'
-
-      local opts = {
-        theme = 'doom',
-        config = {
-          header = vim.split(header, '\n'),
-          center = {
-            {
-              action = 'ene | startinsert',
-              desc = ' New File',
-              icon = ' ',
-              key = 'n',
-            },
-            {
-              -- stylua: ignore
-              action = function ()
-                require('fzf-lua').files({ cwd = vim.fn.stdpath('config')})
-              end,
-              desc = ' Config',
-              icon = ' ',
-              key = 'c',
-            },
-            {
-              -- stylua: ignore
-              action = function() require("persistence").load() end,
-              desc = ' Restore Session',
-              icon = ' ',
-              key = 's',
-            },
-            {
-              action = 'Lazy',
-              desc = ' Lazy',
-              icon = '󰒲 ',
-              key = 'l',
-            },
-            {
-              action = 'qa',
-              desc = ' Quit',
-              icon = ' ',
-              key = 'q',
-            },
-          },
-          -- make footer one line (plugins startuptime)
-          footer = function()
-            local data = {}
-            local stats = require('lazy').stats()
-            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-
-            local fortune = require('fortune').get_fortune()
-            data[1] = 'loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
-            local footer = vim.list_extend(data, { '' })
-            footer = vim.list_extend(data, { '' })
-            footer = vim.list_extend(data, fortune)
-            return footer
-          end,
-        },
-      }
-
-      for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(' ', 20 - #button.desc)
-        button.key_format = '  %s'
-        button.key_hl = 'String'
-      end
-
-      -- close Lazy and re-open when the dashboard is ready
-      if vim.o.filetype == 'lazy' then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd('User', {
-          pattern = 'DashboardLoaded',
-          callback = function()
-            require('lazy').show()
-          end,
-        })
-      end
-
-      return opts
-    end,
+require('noice').setup {
+  cmdline = {
+    view = 'cmdline',
   },
-
-  {
-    'folke/which-key.nvim',
-    version = '*',
-    event = 'VeryLazy',
-    opts = {
-      icons = {
-        rules = false,
-      },
-    },
-    config = function(_, opts)
-      local wk = require 'which-key'
-      wk.add {
-        { '<leader>b', group = '[B]uffer' },
-        { '<leader>b_', hidden = true },
-        { '<leader>c', group = '[C]ode' },
-        { '<leader>c_', hidden = true },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>d_', hidden = true },
-        { '<leader>f', group = '[F]ile/find' },
-        { '<leader>f_', hidden = true },
-        { '<leader>g', group = '[G]it' },
-        { '<leader>g_', hidden = true },
-        { '<leader>q', group = '[Q]uit/session' },
-        { '<leader>q_', hidden = true },
-        { '<leader>r', group = '[R]est' },
-        { '<leader>r_', hidden = true },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>s_', hidden = true },
-        { '<leader>t', group = '[T]oggleTerminal' },
-        { '<leader>t_', hidden = true },
-        { '<leader>u', group = 'Options' },
-        { '<leader>u_', hidden = true },
-        { '<leader><tab>', group = 'Tabs' },
-        { '<leader><tab>_', hidden = true },
-        { '<leader>w', group = '[W]indow' },
-        { '<leader>w_', hidden = true },
-        { '<leader>x', group = 'Diagnostics' },
-        { '<leader>x_', hidden = true },
-      }
-      wk.setup(opts)
-    end,
+  presets = {
+    bottom_search = true,
+    command_palette = true,
+    inc_rename = true,
+    lsp_doc_border = true,
   },
-
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    version = '*',
-    event = 'BufRead',
-    opts = {
-      indent = {
-        char = '│',
-        tab_char = '│',
-      },
-      scope = { enabled = false },
-      exclude = {
-        filetypes = {
-          'help',
-          'alpha',
-          'dashboard',
-          'neo-tree',
-          'Trouble',
-          'trouble',
-          'lazy',
-          'mason',
-          'notify',
-          'toggleterm',
-          'lazyterm',
-        },
-      },
-    },
-    main = 'ibl',
-  },
-  -- show marks in signcolumn
-  {
-    'chentoast/marks.nvim',
-    event = 'BufReadPre',
-    opts = {},
-  },
-
-  { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPre' },
-
-  -- Highlight todo, notes, etc in comments
-  {
-    'folke/todo-comments.nvim',
-    version = '*',
-    event = 'BufRead',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
-    keys = {
-      {
-        '<leader>st',
-        '<cmd>TodoFzfLua<cr>',
-        desc = '[S]earch [T]odo',
-      },
+  lsp = {
+    override = {
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
     },
   },
+}
 
-  {
-    'nvzone/minty',
-    lazy = true,
-    cmd = {
-      'Huefy',
-      'Shades',
-    },
-    dependencies = { 'nvzone/volt', lazy = true },
+local wk = require 'which-key'
+wk.setup {
+  icons = {
+    rules = false,
   },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'BufRead',
-    opts = {},
-  },
-  {
-    'rachartier/tiny-glimmer.nvim',
-    event = 'VeryLazy',
-    opts = {
-      overwrite = {
-        undo = {
-          enabled = true,
-        },
-      },
-    },
-  },
-  {
-    'folke/twilight.nvim',
-    opts = {},
-    keys = {
-      {
-        '<leader>ut',
-        '<cmd>Twilight<cr>',
-        desc = 'Toggle [T]wilight',
-      },
-    },
-  },
+}
+wk.add {
+  { '<leader>b', group = '[B]uffer' },
+  { '<leader>b_', hidden = true },
+  { '<leader>c', group = '[C]ode' },
+  { '<leader>c_', hidden = true },
+  { '<leader>d', group = '[D]ocument' },
+  { '<leader>d_', hidden = true },
+  { '<leader>f', group = '[F]ile/find' },
+  { '<leader>f_', hidden = true },
+  { '<leader>g', group = '[G]it' },
+  { '<leader>g_', hidden = true },
+  { '<leader>q', group = '[Q]uit/session' },
+  { '<leader>q_', hidden = true },
+  { '<leader>r', group = '[R]est' },
+  { '<leader>r_', hidden = true },
+  { '<leader>s', group = '[S]earch' },
+  { '<leader>s_', hidden = true },
+  { '<leader>t', group = '[T]oggleTerminal' },
+  { '<leader>t_', hidden = true },
+  { '<leader>u', group = 'Options' },
+  { '<leader>u_', hidden = true },
+  { '<leader><tab>', group = 'Tabs' },
+  { '<leader><tab>_', hidden = true },
+  { '<leader>w', group = '[W]indow' },
+  { '<leader>w_', hidden = true },
+  { '<leader>x', group = 'Diagnostics' },
+  { '<leader>x_', hidden = true },
 }

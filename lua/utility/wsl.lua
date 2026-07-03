@@ -8,7 +8,6 @@ local M = setmetatable({}, {
 function M.is_wsl()
   local wsl_distro = vim.fn.getenv 'WSL_DISTRO_NAME'
 
-  Utils.notify.info(tostring(wsl_distro), { title = 'Info' })
   if wsl_distro ~= nil then
     return false
   else
