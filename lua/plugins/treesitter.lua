@@ -1,4 +1,15 @@
-vim.pack.add { gh 'nvim-treesitter/nvim-treesitter-context' }
+vim.pack.add {
+  gh 'nvim-treesitter/nvim-treesitter',
+  gh 'nvim-treesitter/nvim-treesitter-context',
+  gh 'nvim-treesitter/nvim-treesitter-textobjects',
+}
+
+local hook = function(ev)
+  local name, kind = ev.data.spec.name, ev.data.kind
+  if name == 'nvim-treesitter' and (kind == 'install' or kind == 'update') then
+    vim.system({ 'TSUpdate' }, { cwd = ev.data.path})
+  end
+end
 
 return {
   {
@@ -52,10 +63,5 @@ return {
     --     },
     --   }
     -- end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    branch = 'main',
-    event = 'BufReadPre',
   },
 }

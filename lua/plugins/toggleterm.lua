@@ -19,23 +19,12 @@ require('toggleterm').setup {
   end,
 }
 
+
+-- stylua: ignore start
 vim.keymap.set({ 'n', 't' }, '<c-_>', vim_cmd_vcount, { desc = 'ToggleTerm' })
-
--- duplicate from above,
-vim.keymap.set({ 'n', 't' }, '<c-/>', vim_cmd_vcount, { desc = 'ToggleTerm' })
-
-vim.keymap.set('n', '<leader>tv', function()
-  vim_cmd_vcount 'ToggleTerm direction=vertical'
-end, { desc = 'ToggleTerm [v]ertical' })
-
-vim.keymap.set('n', '<leader>th', function()
-  vim_cmd_vcount 'ToggleTerm direction=horizontal size=20'
-end, { desc = 'ToggleTerm [h]orizontal' })
-
-vim.keymap.set('n', '<leader>tf', function()
-  vim_cmd_vcount 'ToggleTerm direction=float'
-end, { desc = 'ToggleTerm [f]loat' })
-
-vim.keymap.set('n', '<leader>gg', function()
-  Snacks.lazygit()
-end, { desc = 'Lazygit' })
+vim.keymap.set({ 'n', 't' }, '<c-/>', vim_cmd_vcount, { desc = 'ToggleTerm' }) -- duplicate from above,
+vim.keymap.set('n', '<leader>tv', function() vim_cmd_vcount 'ToggleTerm direction=vertical' end, { desc = 'ToggleTerm [v]ertical' })
+vim.keymap.set('n', '<leader>th', function() vim_cmd_vcount 'ToggleTerm direction=horizontal size=20' end, { desc = 'ToggleTerm [h]orizontal' })
+vim.keymap.set('n', '<leader>tf', function() vim_cmd_vcount 'ToggleTerm direction=float' end, { desc = 'ToggleTerm [f]loat' })
+vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit() end, { desc = 'Lazygit' })
+-- stylua: ignore end

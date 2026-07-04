@@ -1,45 +1,25 @@
 vim.pack.add {
-  'folke/persistence.nvim',
+  gh 'folke/persistence.nvim',
+  gh 'meznaric/key-analyzer.nvim',
+  gh '2kabhishek/nerdy.nvim', -- finds nerd glyphs easily
+    gh 'Hashino/doing.nvim',
 }
 
 local persistence = require 'persistence'
 persistence.setup { options = vim.opt.sessionoptions:get() }
 
 -- stylua: ignore start
-vim.keymap.set('<leader>qs', function() persistence.load() end, { desc = 'Restore Session' })
-vim.keymap.set('<leader>ql', function() persistence.load { last = true } end, { desc = 'Restore Last Session' })
-vim.keymap.set('<leader>qd', function() persistence.stop() end, { desc = "Don't Save Current Session" })
-vim.keymap.set('<leader>sp', function() persistence.select() end, { desc = 'Search [p]rojects' })
+-- vim.keymap.set('<leader>qs', function() persistence.load() end, { desc = 'Restore Session' })
+-- vim.keymap.set('<leader>ql', function() persistence.load { last = true } end, { desc = 'Restore Last Session' })
+-- vim.keymap.set('<leader>qd', function() persistence.stop() end, { desc = "Don't Save Current Session" })
+-- vim.keymap.set('<leader>sp', function() persistence.select() end, { desc = 'Search [p]rojects' })
 -- stylua: ignore end
 
-return {
-  -- HTTP REST-Client Interface
-  {
-    'mistweaverco/kulala.nvim',
-    version = '*',
-    ft = 'http',
-    opts = {},
-    dependencies = {
-      {
-        'nvim-treesitter/nvim-treesitter',
-        opts = {
-          ensure_installed = { 'http', 'graphql' },
-        },
-      },
-    },
-    -- stylua: ignore
-    keys = {
-      {"<leader>r", "", desc = "+[R]est"},
-      {"<leader>rr", function () require('kulala').run() end, desc = 'Run request'},
-      {"<leader>rR", function () require('kulala').replay() end, desc = 'Replay last request'},
-      {"<leader>r[", function () require('kulala').jump_prev() end, desc = 'Jump to previous'},
-      {"<leader>r]", function () require('kulala').jump_next() end, desc = 'Jump to next'},
-      {"<leader>rv", function () require('kulala').toggle_view() end, desc = 'Toggle view'},
-      {"<leader>r/", function () require('kulala').search() end, desc = 'Search request files'},
-      {"<leader>rs", function () require('kulala').scratchpad() end, desc = 'Open Scratchpad'},
-    },
-  },
+vim.keymap.set('n', '<leader>da', function() require('doing').add() end, { desc = '[D]oing: [A]dd' })
+vim.keymap.set('n', '<leader>dn', function() require('doing').done() end, { desc = '[D]oing: Do[n]e' })
+vim.keymap.set('n', '<leader>de', function() require('doing').edit() end, { desc = '[D]oing: [E]dit' })
 
+return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     ft = 'markdown',
@@ -121,25 +101,6 @@ return {
   },
 
   {
-    'Hashino/doing.nvim',
-    lazy = true,
-    cmd = 'Do',
-    -- stylua: ignore
-    keys = {
-      { '<leader>da', function() require('doing').add() end, desc = '[D]oing: [A]dd', },
-      { '<leader>dn', function() require('doing').done() end, desc = '[D]oing: Do[n]e', },
-      { '<leader>de', function() require('doing').edit() end, desc = '[D]oing: [E]dit', },
-    },
-  },
-
-  -- finds nerd glyphs easily
-  {
-    '2kabhishek/nerdy.nvim',
-    cmd = 'Nerdy',
-    opts = {},
-  },
-
-  {
     'mluders/comfy-line-numbers.nvim',
     event = 'BufReadPre',
     opts = {
@@ -151,12 +112,6 @@ return {
   --   'shahshlok/vim-coach.nvim',
   --   lazy = false,
   -- },
-  {
-    'rubiin/fortune.nvim',
-    opts = {
-      content_type = 'mixed',
-    },
-  },
   {
     'AlejandroSuero/freeze-code.nvim',
     opts = {

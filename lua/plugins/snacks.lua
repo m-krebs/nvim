@@ -5,10 +5,7 @@ require('snacks').setup {
   scroll = { enabled = true },
 }
 
-vim.keymap.set('n', '<leader>z', function()
-  Snacks.zen()
-end, { desc = 'Toggle [z]en mode' })
-
-vim.keymap.set('n', '<leader>e', function()
-  Snacks.explorer()
-end, { desc = 'Toggle [e]xplorer' })
+-- stylua: ignore start
+vim.keymap.set('n', '<leader>z', function() Snacks.zen() end, { desc = 'Toggle [z]en mode' })
+vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Toggle [e]xplorer' })
+-- stylua: ignore end
