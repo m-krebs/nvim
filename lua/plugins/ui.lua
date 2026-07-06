@@ -7,14 +7,9 @@ vim.pack.add {
   gh 'folke/noice.nvim',
   gh 'lukas-reineke/indent-blankline.nvim',
   gh 'chentoast/marks.nvim',
-  gh 'folke/todo-comments.nvim',
   gh 'rachartier/tiny-inline-diagnostic.nvim',
   gh 'rachartier/tiny-glimmer.nvim',
 }
-
-require('todo-comments').setup { signs = false }
-
-vim.keymap.set('n', '<leader>st', '<cmd>TodoFzfLua<cr>', { desc = '[S]earch [T]odo' })
 
 require('tiny-glimmer').setup {
   overwrite = {

@@ -1,8 +1,4 @@
-return {
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^9',
-    -- This plugin is already lazy
-    lazy = false,
-  },
-}
+vim.pack.add { {
+  src = gh 'mrcjkb/rustaceanvim',
+  version = vim.version.range '^9',
+} }

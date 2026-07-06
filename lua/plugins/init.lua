@@ -1,7 +1,7 @@
 require 'plugins.utils'
 require 'plugins.treesitter'
-require 'plugins.dashboard'
 require 'plugins.ui'
+require 'plugins.dashboard'
 require 'plugins.editor'
 require 'plugins.navigation'
 require 'plugins.mini'
@@ -16,3 +16,5 @@ require 'plugins.misc'
 
 require 'plugins.overseer'
 require 'plugins.kulala'
+
+require 'plugins.markdown'

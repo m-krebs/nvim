@@ -2,7 +2,7 @@ vim.pack.add {
   gh 'folke/persistence.nvim',
   gh 'meznaric/key-analyzer.nvim',
   gh '2kabhishek/nerdy.nvim', -- finds nerd glyphs easily
-    gh 'Hashino/doing.nvim',
+  gh 'Hashino/doing.nvim',
 }
 
 local persistence = require 'persistence'
@@ -15,31 +15,17 @@ persistence.setup { options = vim.opt.sessionoptions:get() }
 -- vim.keymap.set('<leader>sp', function() persistence.select() end, { desc = 'Search [p]rojects' })
 -- stylua: ignore end
 
-vim.keymap.set('n', '<leader>da', function() require('doing').add() end, { desc = '[D]oing: [A]dd' })
-vim.keymap.set('n', '<leader>dn', function() require('doing').done() end, { desc = '[D]oing: Do[n]e' })
-vim.keymap.set('n', '<leader>de', function() require('doing').edit() end, { desc = '[D]oing: [E]dit' })
+vim.keymap.set('n', '<leader>da', function()
+  require('doing').add()
+end, { desc = '[D]oing: [A]dd' })
+vim.keymap.set('n', '<leader>dn', function()
+  require('doing').done()
+end, { desc = '[D]oing: Do[n]e' })
+vim.keymap.set('n', '<leader>de', function()
+  require('doing').edit()
+end, { desc = '[D]oing: [E]dit' })
 
 return {
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {},
-  },
-
-  {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    ft = 'markdown',
-    build = function()
-      vim.opt.rtp:prepend(vim.fn.stdpath 'data' .. '/lazy/markdown-preview.nvim')
-      vim.fn['mkdp#util#install']()
-    end,
-  },
-
   {
     'mgierada/lazydocker.nvim',
     dependencies = { 'akinsho/toggleterm.nvim' },

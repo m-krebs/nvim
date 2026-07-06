@@ -52,18 +52,18 @@ local opts = {
       },
     },
     -- make footer one line (plugins startuptime)
-    -- footer = function()
-    --   local data = {}
-    --   -- local stats = require('lazy').stats()
-    --   local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    --
-    --   local fortune = require('fortune').get_fortune()
-    --   data[1] = 'loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
-    --   local footer = vim.list_extend(data, { '' })
-    --   footer = vim.list_extend(data, { '' })
-    --   footer = vim.list_extend(data, fortune)
-    --   return footer
-    -- end,
+    footer = function()
+      local data = {}
+      --   -- local stats = require('lazy').stats()
+      --   local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+      --
+      local fortune = require('fortune').get_fortune()
+      --   data[1] = 'loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
+      -- local footer = vim.list_extend(data, { '' })
+      --   footer = vim.list_extend(data, { '' })
+      -- footer = vim.list_extend(data, fortune)
+      return fortune
+    end,
   },
 }
 

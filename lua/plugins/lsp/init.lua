@@ -1,15 +1,99 @@
 local map = vim.keymap.set
 
 -- status updates for LSP
-vim.pack.add { gh 'j-hui/fidget.nvim' }
-require('fidget').setup {}
-
 vim.pack.add {
+  gh 'j-hui/fidget.nvim',
+  gh 'neovim/nvim-lspconfig',
   gh 'mason-org/mason.nvim',
+  gh 'williamboman/mason-lspconfig.nvim',
+  gh 'WhoIsSethDaniel/mason-tool-installer.nvim',
+}
+require('fidget').setup {}
+require('mason').setup {
+  ui = {
+    icons = {
+      package_pending = '',
+      package_installed = '',
+      package_uninstalled = '',
+    },
+  },
+}
+map('n', '<leader>cm', '<cmd>Mason<cr>', { desc = 'Mason' })
+
+-- faster luaLS configuration
+vim.pack.add { gh 'folke/lazydev.nvim' }
+require('lazydev').setup {
+  library = {
+    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+  },
 }
 
-require('mason').setup {}
-map('n', '<leader>cm', '<cmd>Mason<cr>', { desc = 'Mason' })
+-- stylua: ignore start
+map('n', '<leader>ca', function() vim.lsp.buf.code_action() end, { desc = '[C]ode [A]ctions' })
+map('n', '<leader>cr', function() vim.lsp.buf.rename() end, { desc = '[C]ode [R]ename' })
+map('n', 'gd', function() vim.lsp.buf.definition() end, { desc = '[G]oto [D]efinition' })
+map('n', 'gr', '<cmd>FzfLua lsp_references<CR>', { desc = '[G]oto [R]eferences' })
+map('n', 'gI', function() require('fzf-lua').lsp_implementations() end, { desc = '[G]oto [I]mplementation' })
+-- Jump to the type of the word under your cursor.
+--  Useful when you're not sure what type a variable is and you want to see
+--  the definition of its *type*, not where it was *defined*.
+map('n', '<leader>D', function() require('fzf-lua').lsp_typedefs() end, { desc = 'Type [D]efinition' })
+-- Fuzzy find all the symbols in your current document.
+--  Symbols are things like variables, functions, types, etc.
+map('n', '<leader>ds', function() require('fzf-lua').lsp_document_symbols() end, { desc = '[D]ocument [S]ymbols' })
+-- Fuzzy find all the symbols in your current workspace
+--  Similar to document symbols, except searches over your whole project.
+map('n', '<leader>ws', function() require('fzf-lua').lsp_workspace_symbols() end, { desc = '[W]orkspace [S]ymbols' })
+map('n', 'K', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' })
+-- In C this would take you to the header
+map('n', 'gD', function() vim.lsp.buf.declaration() end, { desc = '[G]oto [D]eclaration' })
+-- stylua: ignore end
+
+local servers = {
+  -- See `:help lspconfig-all` for a list of pre-configured LSPs
+  stylua = {},
+  lua_ls = {
+    on_init = function(client)
+      client.server_capabilities.documentFormattingProvider = false
+
+      if client.workspace_folders then
+        local path = client.workspace_folders[1].name
+        if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
+          return
+        end
+      end
+
+      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+        runtime = {
+          version = 'LuaJIT',
+          path = { 'lua/?.lua', 'lua/?/init.lua' },
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
+            '${3rd}/luv/library',
+            '${3rd}/busted/library',
+          }),
+        },
+      })
+    end,
+    ---@type lspconfig.settings.lua_ls
+    settings = {},
+  },
+  ts_ls = {},
+  svelte = {},
+}
+
+local ensure_installed = vim.tbl_keys(servers or {})
+
+require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+for name, server in pairs(servers) do
+  vim.lsp.config(name, server)
+  vim.lsp.enable(name)
+end
+
+require 'plugins.lsp.rust'
 
 return {
   require 'plugins.lsp.rust',
@@ -20,17 +104,6 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'folke/neoconf.nvim', version = '*', cmd = 'Neoconf', opts = {} },
-      'saghen/blink.cmp',
-      {
-        'folke/lazydev.nvim',
-        version = '*',
-        ft = 'lua',
-        opts = {
-          library = {
-            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-          },
-        },
-      },
       -- lsp package manager
       { 'mason-org/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim', version = '*' },
@@ -39,26 +112,6 @@ return {
       { 'j-hui/fidget.nvim', version = '*', opts = {} },
     },
     -- stylua: ignore
-    keys = {
-      { '<leader>ca', function() vim.lsp.buf.code_action() end, desc = '[C]ode [A]ctions' },
-      { '<leader>cr', function () vim.lsp.buf.rename() end, desc = '[C]ode [R]ename' },
-      { 'gd', function () vim.lsp.buf.definition() end, desc = '[G]oto [D]efinition' },
-      { 'gr', '<cmd>FzfLua lsp_references<CR>', desc = '[G]oto [R]eferences' },
-      { 'gI', function() require('fzf-lua').lsp_implementations() end, desc = '[G]oto [I]mplementation' },
-      -- Jump to the type of the word under your cursor.
-      --  Useful when you're not sure what type a variable is and you want to see
-      --  the definition of its *type*, not where it was *defined*.
-      { '<leader>D', function() require('fzf-lua').lsp_typedefs() end, desc = 'Type [D]efinition' },
-      -- Fuzzy find all the symbols in your current document.
-      --  Symbols are things like variables, functions, types, etc.
-      { '<leader>ds', function() require('fzf-lua').lsp_document_symbols() end, desc = '[D]ocument [S]ymbols' },
-      -- Fuzzy find all the symbols in your current workspace
-      --  Similar to document symbols, except searches over your whole project.
-      { '<leader>ws', function() require('fzf-lua').lsp_workspace_symbols() end, desc = '[W]orkspace [S]ymbols' },
-      { 'K', function() vim.lsp.buf.hover() end, desc = 'Hover Documentation' },
-      -- In C this would take you to the header
-      { 'gD', function() vim.lsp.buf.declaration() end, desc = '[G]oto [D]eclaration' },
-    },
     opts = function()
       return {
         setup = {
@@ -138,21 +191,5 @@ return {
         },
       }
     end,
-  },
-  {
-    'mason-org/mason.nvim',
-    version = '^2',
-    cmd = 'Mason',
-    keys = { { '<leader>cm', '<cmd>[M]ason<cr>', desc = 'Mason' } },
-    build = ':MasonUpdate',
-    opts = {
-      ui = {
-        icons = {
-          package_pending = '',
-          package_installed = '',
-          package_uninstalled = '',
-        },
-      },
-    },
   },
 }

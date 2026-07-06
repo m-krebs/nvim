@@ -4,6 +4,7 @@ vim.pack.add {
   gh 'stevearc/quicker.nvim',
   gh 'error311/wayfinder.nvim',
   gh 'pteroctopus/faster.nvim',
+  gh 'folke/flash.nvim',
 }
 
 return {
