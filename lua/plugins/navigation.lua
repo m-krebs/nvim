@@ -17,7 +17,7 @@ fzflua.setup {
   fzf_opts = {
     ['--cycle'] = true,
   },
-  file_ignore_patterns = { 'lazy-lock.json' },
+  file_ignore_patterns = { 'nvim-pack-lock.json' },
   files = {
     formatter = 'path.filename_first',
   },
@@ -29,7 +29,7 @@ fzflua.setup {
 map({ 'n', 'v' }, '<leader><space>', '<cmd>FzfLua files<cr>', { desc = 'Find files' })
 map({ 'n', 'v' }, '<leader>sb', '<cmd>FzfLua blines<cr>', { desc = 'FuzzyFind [b]uffer' })
 map({ 'n', 'v' }, '<leader>/', function()
-  require('fzf-lua').live_grep_native { filter = "rg -v 'lazy-lock.json'" }
+  require('fzf-lua').live_grep_native { filter = "rg -v 'nvim-pack-lock.json'" }
 end, { desc = 'Grep project' })
 map({ 'n', 'v' }, '<leader>,', '<cmd>FzfLua buffers<cr>', { desc = 'Search buffers' })
 map({ 'n', 'v' }, '<leader>sk', '<cmd>FzfLua keymaps<cr>', { desc = 'Search [k]eymaps' })

@@ -5,7 +5,7 @@ vim.pack.add { gh 'nvimdev/dashboard-nvim' }
 local hour = tonumber(vim.fn.strftime '%H')
 local part_id = math.floor((hour + 4) / 8) + 1
 local day_part = ({ 'night', 'morning', 'afternoon', 'evening' })[part_id]
-local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
+local username = vim.uv.os_get_passwd()['username'] or 'USERNAME'
 
 local header = ('Good %s { %s }'):format(day_part, username)
 
@@ -37,12 +37,6 @@ local opts = {
         desc = ' Restore Session',
         icon = ' ',
         key = 's',
-      },
-      {
-        action = 'Lazy',
-        desc = ' Lazy',
-        icon = '󰒲 ',
-        key = 'l',
       },
       {
         action = 'qa',

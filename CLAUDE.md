@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal Neovim configuration using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. Requires Neovim >= 0.12.0.
+Personal Neovim configuration using `vim.pack` (Neovim's built-in package manager) as the plugin manager. Requires Neovim >= 0.12.0.
 
 ## External Dependencies
 
@@ -19,50 +19,79 @@ Personal Neovim configuration using [lazy.nvim](https://github.com/folke/lazy.nv
 ### Entry Point
 
 `init.lua` bootstraps everything in order:
-1. Sets `mapleader = ' '` and `maplocalleader = '\\'`
-2. Loads `_G.Utils` from `lua/utility/`
-3. Loads `lua/config/options.lua`, `lua/config/keymaps.lua`, `lua/config/autocmds.lua`
-4. Bootstraps lazy.nvim via `lua/config/lazy_setup.lua`, which imports all specs from `lua/plugins/`
+1. Enables `vim.loader` for faster startup
+2. Sets `mapleader = ' '` and `maplocalleader = ' '`
+3. Defines `_G.gh(repo)` helper (returns `https://github.com/<repo>`)
+4. Loads `_G.Utils` from `lua/utility/`
+5. Loads `lua/core/options.lua`, `lua/core/colorscheme.lua`, `lua/core/keymaps.lua`, `lua/core/autocmds.lua`
+6. Calls `require 'plugins'` which loads `lua/plugins/init.lua`
+
+### Plugin Loading Pattern
+
+Plugins are managed by `vim.pack` (no external plugin manager). Each plugin file:
+1. Calls `vim.pack.add { gh 'author/repo', ... }` to register packages
+2. Immediately calls `require('plugin').setup {}` for configuration
+
+`lua/plugins/init.lua` explicitly `require`s each plugin file in order. There is no lazy-loading infrastructure — plugins load eagerly unless the plugin itself defers work.
+
+The lock file is `nvim-pack-lock.json` at the repo root.
 
 ### Plugin Organization (`lua/plugins/`)
 
-Each file returns a lazy.nvim spec table. All files are auto-imported as `{ import = 'plugins' }`.
+| File | Purpose |
+|---|---|
+| `init.lua` | Requires all other plugin files in order |
+| `lsp/init.lua` | fidget, nvim-lspconfig, Mason, mason-lspconfig, mason-tool-installer, lazydev |
+| `lsp/rust.lua` | rustaceanvim |
+| `completion.lua` | blink.cmp (completion) |
+| `editor.lua` | vim-sleuth, Comment.nvim, quicker.nvim, wayfinder, faster.nvim, flash.nvim |
+| `navigation.lua` | fzf-lua (registered as `vim.ui.select`), todo-comments |
+| `treesitter.lua` | nvim-treesitter + textobjects |
+| `git.lua` | vim-fugitive, gitsigns.nvim, diffview.nvim |
+| `ui.lua` | bufferline, lualine, nvim-notify, twilight, which-key, noice.nvim, ibl, marks.nvim, tiny-inline-diagnostic, tiny-glimmer |
+| `dashboard.lua` | dashboard-nvim |
+| `snacks.lua` | snacks.nvim (explorer, zen, scroll, lazygit) |
+| `format.lua` | conform.nvim — formats on save; per-filetype formatters |
+| `lint.lua` | nvim-lint — hadolint for Dockerfiles |
+| `mini.lua` | mini.nvim modules |
+| `toggleterm.lua` | Terminal integration |
+| `overseer.lua` | overseer.nvim (task runner) |
+| `kulala.lua` | kulala.nvim (HTTP REST client) |
+| `misc.lua` | persistence.nvim, key-analyzer, nerdy.nvim, doing.nvim |
+| `markdown.lua` | Markdown plugins |
+| `utils.lua` | Miscellaneous utilities |
+
+### Core Config (`lua/core/`)
 
 | File | Purpose |
 |---|---|
-| `init.lua` | Core: lazy.nvim pin, snacks.nvim (explorer, zen, scroll, lazygit) |
-| `lsp/init.lua` | nvim-lspconfig + Mason + mason-lspconfig + rustaceanvim + powershell.nvim |
-| `completion.lua` | blink.cmp (completion), copilot.lua |
-| `editor.lua` | vim-sleuth, flash.nvim, fzf-lua, trouble.nvim, overseer.nvim, quicker.nvim |
-| `format.lua` | conform.nvim — formats on save; per-filetype formatters |
-| `lint.lua` | nvim-lint — hadolint for Dockerfiles |
-| `treesitter.lua` | nvim-treesitter (main branch) + textobjects |
-| `git.lua` | vim-fugitive, gitsigns.nvim, diffview.nvim |
-| `ui.lua` | bufferline, lualine, nvim-notify, noice.nvim, dashboard, which-key, ibl, todo-comments, colorschemes |
-| `misc.lua` | persistence.nvim (sessions), kulala.nvim (HTTP REST client), markdown plugins, lazydocker |
-| `mini.lua` / `minipairs.lua` | mini.nvim modules |
-| `toggleterm.lua` | Terminal integration |
-| `debug.lua` | DAP debugging |
-| `java.lua` | nvim-jdtls for Java LSP |
-| `themes.lua` | Additional colorscheme(s) |
-| `utils.lua` | Miscellaneous utilities |
+| `options.lua` | Neovim options |
+| `keymaps.lua` | Global keymaps |
+| `autocmds.lua` | Autocommands |
+| `colorscheme.lua` | Colorscheme selection |
+| `macros.lua` | Macro utilities |
 
 ### Global Utilities (`lua/utility/`)
 
-Exposed globally as `_G.Utils` via a lazy-loading metatable. Submodules: `notify`, `terminal`, `telescope`, `wsl`. Access pattern: `Utils.notify.info(...)`, `Utils.terminal.*`, etc.
+Exposed globally as `_G.Utils` via a lazy-loading metatable. Submodules: `notify`, `terminal`, `wsl`. Access pattern: `Utils.notify.info(...)`, `Utils.terminal.*`, etc.
 
 ### LSP Setup Pattern
 
-`lua/plugins/lsp/init.lua` uses an `opts.setup` table to skip `lspconfig` for certain servers:
-- `jdtls` → handled by `nvim-jdtls` (`lua/plugins/java.lua`)
-- `rust_analyzer` → handled by `rustaceanvim`
+`lua/plugins/lsp/init.lua` uses `vim.lsp.config` + `vim.lsp.enable` directly (not lspconfig's `setup()`). LSP servers listed in the `servers` table are iterated and enabled via:
+```lua
+vim.lsp.config(name, server)
+vim.lsp.enable(name)
+```
+Mason installs the tools; `mason-tool-installer` ensures they're present.
+
+Rust is handled separately by rustaceanvim (`lua/plugins/lsp/rust.lua`).
 
 LSP capabilities come from `blink.cmp` (`require('blink.cmp').get_lsp_capabilities()`), not nvim-cmp.
 
 ### Key Conventions
 
 - `<leader>` = Space
-- `<localleader>` = `\`
+- `<localleader>` = Space
 - `jk` in insert mode → Escape
 - fzf-lua is registered as `vim.ui.select`
 - Diagnostics use `tiny-inline-diagnostic.nvim`; `virtual_text = false` globally
@@ -76,4 +105,4 @@ LSP capabilities come from `blink.cmp` (`require('blink.cmp').get_lsp_capabiliti
 
 ## Adding a Plugin
 
-Create or edit a file in `lua/plugins/` returning a lazy.nvim spec. The file is auto-discovered. Follow the existing pattern: use `version = '*'` or a pinned semver, declare keys/cmd for lazy-loading, and put config in `opts` (table) or `config` (function) as appropriate.
+Add `vim.pack.add { gh 'author/repo' }` in the appropriate `lua/plugins/` file, then call `require('plugin').setup {}` immediately after. If creating a new file, add `require 'plugins.yourfile'` to `lua/plugins/init.lua`.
