@@ -92,7 +92,7 @@ local servers = {
     ---@type lspconfig.settings.lua_ls
     settings = {},
   },
-  ts_ls = {},
+  tsgo = {},
   svelte = {},
   kotlin_lsp = {},
 }
