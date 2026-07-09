@@ -1,23 +1,34 @@
 -- See `:help vim.opt or option-list`
 local opt = vim.opt
-local global = vim.g
 
--- g.clipboard = {
---   name = 'OSC 52',
---   copy = { ['+'] = require('vim.ui.clipboard.osc52').copy '+', ['*'] = require('vim.ui.clipboard.osc52').copy '*' },
---   paste = {
---     ['+'] = no_paste,
---     ['*'] = no_paste,
---   },
--- }
+-- clipboard-backend
+local function no_paste()
+  return {
+    vim.fn.split(vim.fn.getreg '', '\n'),
+    vim.fn.getregtype '',
+  }
+end
+
+if vim.env.TMUX ~= nil then
+  vim.g.clipboard = 'tmux'
+else
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+      ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    },
+    paste = {
+      ['+'] = no_paste,
+      ['*'] = no_paste,
+    },
+  }
+end
+
 if Utils.wsl.is_wsl() == true then
-  -- disable sync on wsl
   opt.clipboard = ''
 else
-  -- Sync with system clipboard
-  vim.schedule(function()
-    opt.clipboard = 'unnamedplus'
-  end)
+  opt.clipboard = 'unnamedplus'
 end
 
 opt.confirm = true -- Confirm to save before exiting modified buffer
@@ -55,7 +66,7 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
 -- disables copilot autocomplete on tab
-global.copilot_no_tab_map = true
+vim.g.copilot_no_tab_map = true
 
 -- local function no_paste()
 --   return {
