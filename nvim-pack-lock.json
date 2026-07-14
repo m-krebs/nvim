@@ -136,12 +136,8 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim"
     },
-    "mini.files": {
-      "rev": "4b3db6f1bf76fc67582e8fe7b2fd04b971707b3f",
-      "src": "https://github.com/echasnovski/mini.files"
-    },
     "mini.nvim": {
-      "rev": "dc8a9918c3b1bc18a5fcd04d39b6d658074c0886",
+      "rev": "05a80b0340a92136a93ab04346cf97de3f165948",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neoconf.nvim": {
