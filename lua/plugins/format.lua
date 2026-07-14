@@ -26,6 +26,7 @@ require('conform').setup {
     rest = { 'kulala' },
     svelte = { 'prettier' },
     python = { 'black' },
+    dockerfile = { 'dockerfmt' },
   },
 }
 vim.keymap.set('n', '<leader>uF', function()
