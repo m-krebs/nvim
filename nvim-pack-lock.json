@@ -33,7 +33,7 @@
       "src": "https://github.com/nvimdev/dashboard-nvim"
     },
     "diffview.nvim": {
-      "rev": "bcf4b62b4acc36a7c3d19e423713a220c838a668",
+      "rev": "b9f10d68116bd3f8d54197a067e11cebfb41b268",
       "src": "https://github.com/dlyongemallo/diffview.nvim"
     },
     "doing.nvim": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "39da6060d53659acf3ec118200bc48721b29b8fd",
+      "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -230,11 +230,11 @@
       "src": "https://github.com/sainnhe/sonokai"
     },
     "tiny-glimmer.nvim": {
-      "rev": "f26728abf811324d7ed6b035a11d7b76a27c06c3",
+      "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "e930d0a46031645040d5492595b46cdf6ab3514f",
+      "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "todo-comments.nvim": {
