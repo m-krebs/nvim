@@ -56,6 +56,10 @@
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"
     },
+    "flume.nvim": {
+      "rev": "2ee070038817878463a3e0d0556f4ca3ef043c4a",
+      "src": "https://github.com/mitander/flume.nvim"
+    },
     "fortune.nvim": {
       "rev": "1f559ff20b295b083c73c96bf935cad12c72ddca",
       "src": "https://github.com/rubiin/fortune.nvim"

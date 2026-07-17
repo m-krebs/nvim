@@ -5,6 +5,7 @@ vim.pack.add {
   gh 'folke/tokyonight.nvim',
   gh 'eldritch-theme/eldritch.nvim',
   gh 'rebelot/kanagawa.nvim',
+  gh 'mitander/flume.nvim',
 }
 
 vim.cmd.colorscheme 'cyberdream'
