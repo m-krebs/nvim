@@ -66,4 +66,7 @@ cmp.setup {
   signature = {
     enabled = true,
   },
+  term = {
+    enabled = false,
+  },
 }
