@@ -11,6 +11,7 @@ vim.pack.add {
   gh 'rachartier/tiny-glimmer.nvim',
 }
 
+require('tiny-inline-diagnostic').setup()
 require('tiny-glimmer').setup {
   overwrite = {
     undo = {

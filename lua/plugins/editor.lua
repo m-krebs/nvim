@@ -10,6 +10,7 @@ vim.pack.add {
   gh 'folke/trouble.nvim',
 }
 
+require('quicker').setup()
 require('flash').setup {
   modes = {
     search = { enabled = true },
