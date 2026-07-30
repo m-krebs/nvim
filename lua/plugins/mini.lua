@@ -40,7 +40,7 @@ do -- configure mini.files
 
   vim.keymap.set('n', '<leader>fM', function()
     minifiles.open(vim.loop.cwd(), true)
-  end, { desc = 'mini.files (relative)' })
+  end, { desc = 'mini.files (cwd)' })
 
   local show_dotfiles = true
   local filter_show = function(fs_entry)
